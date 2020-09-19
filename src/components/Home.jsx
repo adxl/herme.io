@@ -1,16 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class Home extends Component {
-    state = {  }
-    render() { 
-        return ( 
-            <Fragment>
-                <div>
-                    <h1>Home</h1>
-                </div>
-            </Fragment>
-         );
+    state = { }
+
+    render() {
+      return (
+        <fragment>
+          <div>
+            <h1>Home</h1>
+          </div>
+        </fragment>
+      );
     }
 }
- 
+
 export default Home;

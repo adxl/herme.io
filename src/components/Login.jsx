@@ -1,16 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class Login extends Component {
-    state = {  }
-    render() { 
-        return ( 
-            <Fragment>
-                <div>
-                    <h1>Login</h1>
-                </div>
-            </Fragment>
-         );
+    state = { }
+
+    render() {
+      return (
+        <fragment>
+          <div>
+            <h1>Login</h1>
+          </div>
+        </fragment>
+      );
     }
 }
- 
+
 export default Login;
