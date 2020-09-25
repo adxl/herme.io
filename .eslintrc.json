@@ -38,6 +38,19 @@
         "react/state-in-constructor": [
             0,
             "always"
+        ],
+        "jsx-a11y/label-has-associated-control": [
+            0,
+            {
+                "labelComponents": [],
+                "labelAttributes": [],
+                "controlComponents": [],
+                "assert": "both",
+                "depth": 25
+            }
+        ],
+        "react/jsx-fragments": [
+            0
         ]
     }
 }
