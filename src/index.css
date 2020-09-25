@@ -9,10 +9,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.login-main {
-  margin-top: 15vh;
+.form-main {
+  margin-top: 12vh;
   display: flex;
   justify-content: center;
   max-width: 100%;
   flex: 100%;
+}
+
+.field {
+  width: 48%;
+  float: left;
+}
+
+.field:first-child {
+  margin-right: 4%;
 }
