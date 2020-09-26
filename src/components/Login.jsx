@@ -32,7 +32,7 @@ class Login extends Component {
 				.then((data) => {
 					const { token } = data;
 					if (token) {
-						localStorage.setItem('token', token);
+						// localStorage.setItem('token', token);
 						window.location.replace('http://localhost:3000/');
 					}
 				})
