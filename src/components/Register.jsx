@@ -59,10 +59,10 @@ class Register extends Component {
 								<p className="h4 text-center mb-5">Welcome to Herme.io</p>
 								<div>
 									<div className="field">
-										<input name="firstName" type="text" placeholder="First Name" id="defaultFormRegisterNameEx" className="form-control" onChange={this.handleInputChange} />
+										<input name="firstName" type="text" placeholder="First Name" id="defaultFormRegisterFNameEx" className="form-control" onChange={this.handleInputChange} />
 									</div>
 									<div className="field">
-										<input name="lastName" type="text" placeholder="Last Name" id="defaultFormRegisterNameEx" className="form-control" onChange={this.handleInputChange} />
+										<input name="lastName" type="text" placeholder="Last Name" id="defaultFormRegisterLNameEx" className="form-control" onChange={this.handleInputChange} />
 										<br />
 									</div>
 								</div>
