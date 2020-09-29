@@ -25,3 +25,63 @@ code {
 .field:first-child {
   margin-right: 4%;
 }
+
+.top-nav {
+  background-color: #343a40;
+  height: 7vh;
+}
+
+.nav-link {
+  color: white;
+}
+
+.profile-col {
+  height: 93vh;
+  /* border: dashed 2px blue; */
+  background-color: #ececec;
+  padding: 0;
+}
+
+.profile-info {
+  /* height: 50%; */
+  /* border: dashed 2px green; */
+  padding: 0;
+}
+
+.profile-pic {
+  /* height: 90%; */
+  /* border: dashed 2px blue; */
+  padding: 0;
+}
+
+.profile-pic>img {
+  width: 100%;
+  padding: 10px;
+  border-radius: 100%;
+}
+
+.profile-name {
+  height: 10%;
+  /* border: dashed 2px blue */
+}
+
+.profile-menu {
+  /* height: 50%; */
+  margin-top: 30px;
+  /* border: dashed 2px red */
+}
+
+.profile-nav>a {
+  color: #212529;
+  padding: 0;
+}
+
+.feed-col {
+  height: 60vh;
+}
+
+/*    DEBUG    STUFF      */
+
+.bor-red {
+  border: dashed 2px
+}
