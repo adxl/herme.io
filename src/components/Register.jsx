@@ -6,6 +6,7 @@ class Register extends Component {
 	state = {
 		firstName: '',
 		lastName: '',
+		email: '',
 		username: '',
 		password: '',
 	}
@@ -23,6 +24,9 @@ class Register extends Component {
 			break;
 		case 'lastName':
 			this.setState({ lastName: value });
+			break;
+		case 'email':
+			this.setState({ email: value });
 			break;
 		case 'username':
 			this.setState({ username: value });
@@ -67,7 +71,9 @@ class Register extends Component {
 									</div>
 								</div>
 
-								<input name="username" type="text" placeholder="Username" id="defaultFormRegisterEmailEx" className="form-control" onChange={this.handleInputChange} />
+								<input name="email" type="email" placeholder="Email" id="defaultFormRegisterEmailEx" className="form-control" onChange={this.handleInputChange} />
+								<br />
+								<input name="username" type="text" placeholder="Username" id="defaultFormRegisterUsernameEx" className="form-control" onChange={this.handleInputChange} />
 								<br />
 								<input name="password" type="password" placeholder="Password" id="defaultFormRegisterPasswordEx" className="form-control" onChange={this.handleInputChange} />
     						<br />
