@@ -70,6 +70,9 @@
         ],
         "no-mixed-spaces-and-tabs": [
             0
+        ],
+        "react/jsx-one-expression-per-line": [
+            0
         ]
     }
 }
