@@ -24,8 +24,6 @@ class Login extends Component {
 				body: JSON.stringify(this.state),
 			};
 
-			// https://herme-io.herokuapp.com/login/
-
 			e.preventDefault();
 			fetch('https://herme-io.herokuapp.com/login/', options)
 				.then((response) => response.json())
@@ -33,7 +31,7 @@ class Login extends Component {
 					const { token } = data;
 					if (token) {
 						localStorage.setItem('token', token);
-						window.location.replace('http://localhost:3000/');
+						window.location.replace('/home');
 					}
 				})
 				.catch((error) => console.log(`caught:${error}`));

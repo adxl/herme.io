@@ -13,7 +13,7 @@ class Home extends Component {
 
 	logout = () => {
 		localStorage.removeItem('token');
-		window.location.replace('http://localhost:3000/login');
+		window.location.replace('/login');
 	}
 
 	async fetchUser() {
@@ -35,7 +35,7 @@ class Home extends Component {
 		return (
 			<Fragment>
 				<MDBNav className="justify-content-end top-nav">
-					<MDBNavLink to="#!" className="nav-link" onClick={this.logout}>Logout</MDBNavLink>
+					<MDBNavLink to="#" className="nav-link" onClick={this.logout}>Logout</MDBNavLink>
 				</MDBNav>
 				<MDBContainer fluid>
 					<MDBRow>
@@ -50,9 +50,9 @@ class Home extends Component {
 							</MDBContainer>
 							<MDBContainer className="profile-menu">
 								<MDBNav className="flex-column profile-nav">
-									<MDBNavLink to="#!">Home</MDBNavLink>
-									<MDBNavLink to="#!">Posts</MDBNavLink>
-									<MDBNavLink to="#!">Friends</MDBNavLink>
+									<MDBNavLink to="/home">Home</MDBNavLink>
+									<MDBNavLink to="/posts">Posts</MDBNavLink>
+									<MDBNavLink to="/friends">Friends</MDBNavLink>
 								</MDBNav>
 							</MDBContainer>
 						</MDBCol>

@@ -48,7 +48,7 @@ class Register extends Component {
 
 		fetch('https://herme-io.herokuapp.com/register/', options)
 			.then((data) => {
-				if (data.ok) { window.location.replace('http://localhost:3000/login'); }
+				if (data.ok) { window.location.replace('/login'); }
 			})
 			.catch((error) => console.log(`caught:${error}`));
 	}
