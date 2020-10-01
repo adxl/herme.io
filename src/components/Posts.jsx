@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Post from './Post';
 
 class Posts extends Component {
     state = {
@@ -28,7 +29,7 @@ class Posts extends Component {
     	return (
     		<Fragment>
     			{posts.length
-    				? posts
+    				? posts.map((p) => <Post key={p.id_post} id={p.id_post} title={p.title} content={p.content} />)
     				: <p> NO POSTS</p>}
     		</Fragment>
     	);
