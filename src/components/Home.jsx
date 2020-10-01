@@ -5,6 +5,7 @@ import { MDBNav, MDBNavItem, MDBNavLink, MDBContainer, MDBRow, MDBCol } from 'md
 class Home extends Component {
 	state = {
 		user: null,
+		currentPage: 'home',
 	}
 
 	componentDidMount() {
@@ -14,6 +15,11 @@ class Home extends Component {
 	logout = () => {
 		localStorage.removeItem('token');
 		window.location.replace('/login');
+	}
+
+	changePage = (e) => {
+		const { name } = e.target;
+		this.setState({ currentPage: name });
 	}
 
 	async fetchUser() {
@@ -31,6 +37,7 @@ class Home extends Component {
 
 	render() {
 		const { user } = this.state;
+		const { currentPage } = this.state;
 
 		return (
 			<Fragment>
@@ -50,13 +57,15 @@ class Home extends Component {
 							</MDBContainer>
 							<MDBContainer className="profile-menu">
 								<MDBNav className="flex-column profile-nav">
-									<MDBNavLink to="/home">Home</MDBNavLink>
-									<MDBNavLink to="/posts">Posts</MDBNavLink>
-									<MDBNavLink to="/friends">Friends</MDBNavLink>
+									<MDBNavLink name="home" to="#" onClick={this.changePage}>Home</MDBNavLink>
+									<MDBNavLink name="posts" to="#" onClick={this.changePage}>Posts</MDBNavLink>
+									<MDBNavLink name="friends" to="#" onClick={this.changePage}>Friends</MDBNavLink>
 								</MDBNav>
 							</MDBContainer>
 						</MDBCol>
-						<MDBCol className="feed-col ">.col-md-4</MDBCol>
+						{ currentPage === 'home' && <MDBCol className="feed-col ">home</MDBCol>}
+						{ currentPage === 'posts' && <MDBCol className="feed-col ">posts</MDBCol>}
+						{ currentPage === 'friends' && <MDBCol className="feed-col ">friends</MDBCol>}
 					</MDBRow>
 				</MDBContainer>
 			</Fragment>

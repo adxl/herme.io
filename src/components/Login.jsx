@@ -17,27 +17,27 @@ class Login extends Component {
 		}
 	}
 
-		handleSubmit = (e) => {
-			const options = {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(this.state),
-			};
-
-			e.preventDefault();
-			fetch('https://herme-io.herokuapp.com/login/', options)
-				.then((response) => response.json())
-				.then((data) => {
-					const { token } = data;
-					if (token) {
-						localStorage.setItem('token', token);
-						window.location.replace('/home');
-					}
-				})
-				.catch((error) => console.log(`caught:${error}`));
+	handleSubmit = (e) => {
+		const options = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(this.state),
 		};
 
-		render() {
+		e.preventDefault();
+		fetch('https://herme-io.herokuapp.com/login/', options)
+			.then((response) => response.json())
+			.then((data) => {
+				const { token } = data;
+				if (token) {
+					localStorage.setItem('token', token);
+					window.location.replace('/home');
+				}
+			})
+			.catch((error) => console.log(`caught:${error}`));
+	};
+
+	render() {
     	return (
     		<Fragment>
     			<MDBContainer>
@@ -62,7 +62,7 @@ class Login extends Component {
     			</MDBContainer>
     		</Fragment>
     	);
-		}
+	}
 }
 
 export default Login;
