@@ -64,14 +64,16 @@ class Home extends Component {
 								</MDBNav>
 							</MDBContainer>
 						</MDBCol>
-						{ currentPage === 'home' && <MDBCol className="feed-col ">home</MDBCol>}
-						{currentPage === 'posts'
+						<MDBCol className="feed-col">
+							{ currentPage === 'home' && <MDBCol>home</MDBCol>}
+							{currentPage === 'posts'
 							&& (
-								<MDBCol className="feed-col ">
+								<MDBCol>
 									<Posts />
 								</MDBCol>
 							)}
-						{ currentPage === 'friends' && <MDBCol className="feed-col ">friends</MDBCol>}
+							{ currentPage === 'friends' && <MDBCol>friends</MDBCol>}
+						</MDBCol>
 					</MDBRow>
 				</MDBContainer>
 			</Fragment>

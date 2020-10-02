@@ -77,7 +77,9 @@ code {
 }
 
 .feed-col {
-  height: 60vh;
+  border: dashed 1px rgb(238, 76, 76);
+  height: 93vh;
+  overflow-y: scroll
 }
 
 /*    DEBUG    STUFF      */

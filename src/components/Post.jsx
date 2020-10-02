@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 
-function Post(props) {
-	// const { id_post } = props.data;
-	const { data } = props;
+class Post extends Component {
+	state = { }
 
-    	return (
-		<Fragment>
-			<p>{data.content}</p>
+	render() {
+		const { data } = this.props;
+		return (
+			<Fragment>
+				<p>{data.content}</p>
     		<hr />
-		</Fragment>
-    	);
+			</Fragment>
+		);
+	}
 }
 
 export default Post;

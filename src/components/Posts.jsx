@@ -41,6 +41,29 @@ class Posts extends Component {
 			.catch((error) => console.log(`caught:${error}`));
 	}
 
+	deletePost = (e) => {
+		const { id } = e.target;
+		const data = {
+			id,
+		};
+		const options = {
+			method: 'DELETE',
+			headers: {
+				Authorization: localStorage.getItem('token'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch('https://herme-io.herokuapp.com/posts/', options)
+			.then((response) => {
+				if (response.ok) {
+					this.fetchPosts();
+				}
+			})
+			.catch((error) => console.log(`caught:${error}`));
+	}
+
 	async fetchPosts() {
     	await fetch('https://herme-io.herokuapp.com/posts', {
     		headers: {
@@ -68,7 +91,12 @@ class Posts extends Component {
     			<MDBContainer fluid>
     				<h2>My posts : </h2>
     				<br />
-    				{posts && posts.map((p) => <Post key={p.id_post} data={p} />)}
+    				{posts && posts.map((p) => (
+						<li key={p.id_post}>
+							<Post data={p} />
+							<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost}>X</MDBBtn>
+						</li>
+					))}
     			</MDBContainer>
     		</Fragment>
     	);
