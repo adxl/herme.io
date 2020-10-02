@@ -1,16 +1,13 @@
 import React, { Fragment } from 'react';
 
 function Post(props) {
-	const { id } = props;
-	const { title } = props;
-	const { content } = props;
+	// const { id_post } = props.data;
+	const { data } = props;
 
     	return (
 		<Fragment>
-			<p>{id}</p>
-    			<h3>{title}</h3>
-    			<p>{content}</p>
-    			<hr />
+			<p>{data.content}</p>
+    		<hr />
 		</Fragment>
     	);
 }

@@ -1,16 +1,47 @@
 import React, { Component, Fragment } from 'react';
+import { MDBContainer, MDBInput, MDBBtn } from 'mdbreact';
 import Post from './Post';
 
 class Posts extends Component {
     state = {
     	posts: [],
+    	newPostContent: '',
     }
 
     componentDidMount() {
     	this.fetchPosts();
     }
 
-    async fetchPosts() {
+	handleInputChange = (e) => {
+		const { value } = e.target;
+		this.setState({ newPostContent: value });
+	}
+
+	createPost = (e) => {
+		const { newPostContent } = this.state;
+		const data = {
+			content: newPostContent,
+		};
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('token'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch('https://herme-io.herokuapp.com/posts/', options)
+			.then((response) => {
+				if (response.ok) {
+					this.setState({ newPostContent: '' });
+					this.fetchPosts();
+				}
+			})
+			.catch((error) => console.log(`caught:${error}`));
+	}
+
+	async fetchPosts() {
     	await fetch('https://herme-io.herokuapp.com/posts', {
     		headers: {
     			Authorization: localStorage.getItem('token'),
@@ -21,19 +52,27 @@ class Posts extends Component {
     			this.setState({ posts: data });
     		})
     		.catch((error) => console.err(`Oops: \n${error}`));
-    }
+	}
 
-    render() {
-    	const { posts } = this.state;
+	render() {
+		const { posts } = this.state;
+		const { newPostContent } = this.state;
 
     	return (
     		<Fragment>
-    			{posts.length
-    				? posts.map((p) => <Post key={p.id_post} id={p.id_post} title={p.title} content={p.content} />)
-    				: <p> NO POSTS</p>}
+    			<MDBContainer fluid>
+    				<MDBInput label="Create a post" value={newPostContent} onChange={this.handleInputChange} />
+    				<MDBBtn color="primary" onClick={this.createPost}>Post</MDBBtn>
+    			</MDBContainer>
+    			<br />
+    			<MDBContainer fluid>
+    				<h2>My posts : </h2>
+    				<br />
+    				{posts && posts.map((p) => <Post key={p.id_post} data={p} />)}
+    			</MDBContainer>
     		</Fragment>
     	);
-    }
+	}
 }
 
 export default Posts;
