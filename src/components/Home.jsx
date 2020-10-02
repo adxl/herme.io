@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { MDBNav, MDBNavItem, MDBNavLink, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import Posts from './Posts';
+import Friends from './Friends';
+import Request from './Requests';
 
 class Home extends Component {
 	state = {
@@ -65,14 +67,24 @@ class Home extends Component {
 							</MDBContainer>
 						</MDBCol>
 						<MDBCol className="feed-col">
-							{ currentPage === 'home' && <MDBCol>home</MDBCol>}
+							{currentPage === 'home'
+								&& (
+									<MDBCol>home</MDBCol>
+								)}
 							{currentPage === 'posts'
-							&& (
-								<MDBCol>
-									<Posts />
-								</MDBCol>
-							)}
-							{ currentPage === 'friends' && <MDBCol>friends</MDBCol>}
+								&& (
+									<MDBCol>
+										<Posts />
+									</MDBCol>
+								)}
+							{currentPage === 'friends'
+								&& (
+									<MDBCol>
+										<Request />
+										<hr />
+										<Friends />
+									</MDBCol>
+								)}
 						</MDBCol>
 					</MDBRow>
 				</MDBContainer>

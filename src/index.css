@@ -9,6 +9,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+li {
+  list-style: none;
+}
+
 .form-main {
   margin-top: 12vh;
   display: flex;
@@ -77,7 +81,6 @@ code {
 }
 
 .feed-col {
-  border: dashed 1px rgb(238, 76, 76);
   height: 93vh;
   overflow-y: scroll
 }

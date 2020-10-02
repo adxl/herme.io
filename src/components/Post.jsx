@@ -8,7 +8,6 @@ class Post extends Component {
 		return (
 			<Fragment>
 				<p>{data.content}</p>
-    		<hr />
 			</Fragment>
 		);
 	}

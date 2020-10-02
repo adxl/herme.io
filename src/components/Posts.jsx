@@ -90,13 +90,15 @@ class Posts extends Component {
     			<br />
     			<MDBContainer fluid>
     				<h2>My posts : </h2>
-    				<br />
+					<br />
+					<ul>
     				{posts && posts.map((p) => (
-						<li key={p.id_post}>
-							<Post data={p} />
-							<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost}>X</MDBBtn>
-						</li>
-					))}
+							<li key={p.id_post}>
+								<Post data={p} />
+								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost}>X</MDBBtn>
+							</li>
+						))}
+					</ul>
     			</MDBContainer>
     		</Fragment>
     	);
