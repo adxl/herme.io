@@ -17,6 +17,29 @@ class Requests extends Component {
 		this.setState({ searchUsername: value });
 	}
 
+	sendRequest = () => {
+		const { searchedUserData } = this.state;
+		const data = {
+			friend: searchedUserData.userData.username,
+		};
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('token'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch('https://herme-io.herokuapp.com/requests/add', options)
+			.then((response) => {
+				if (response.ok) {
+					this.setState({ searchedUserData: null });
+				}
+			})
+			.catch((error) => console.log(`caught:${error}`));
+	}
+
 	searchFriend = () => {
 		const { searchUsername } = this.state;
 		this.setState({ searchedUserData: null });
@@ -60,7 +83,11 @@ class Requests extends Component {
     		<Fragment>
     			<h2>Your friend requests :</h2>
     			<ul>
-    				{requests && requests.map((r) => (<li key={r.usr} />))}
+					{requests.length > 0 && requests.map((r) => (
+						<li key={r.usr}>
+							{r.usr}
+						</li>
+					))}
     				{!requests.length && <p>No requests</p>}
     			</ul>
     			<hr />
@@ -73,10 +100,10 @@ class Requests extends Component {
 								<span>
 									{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}
 								</span>
-								{searchedUserData.isFriend
+								{ !searchedUserData.isFriend && !searchedUserData.isRequested
 								&& (
 									<span>
-										<MDBBtn color="success" rounded size="sm" className="mr-auto" onClick={this.addFriend}> Add </MDBBtn>
+										<MDBBtn color="success" rounded size="sm" className="mr-auto" onClick={this.sendRequest}> Add </MDBBtn>
 									</span>
 								)}
 							</div>

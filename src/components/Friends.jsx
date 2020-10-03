@@ -30,7 +30,7 @@ class Friends extends Component {
     		<Fragment>
     			<h2>Your friends :</h2>
     			<ul>
-    				{friends && friends.map((f) => (
+    				{friends.length > 0 && friends.map((f) => (
     					<li key={f.username}>{f.first_name} {f.last_name}</li>))}
     				{!friends.length && <p>No Friends</p>}
     			</ul>
