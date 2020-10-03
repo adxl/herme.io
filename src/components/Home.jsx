@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { MDBNav, MDBNavItem, MDBNavLink, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import Posts from './Posts';
 import Friends from './Friends';
-import Request from './Requests';
+import Requests from './Requests';
 
 class Home extends Component {
 	state = {
@@ -80,9 +80,10 @@ class Home extends Component {
 							{currentPage === 'friends'
 								&& (
 									<MDBCol>
-										<Request />
-										<hr />
-										<Friends />
+										<MDBRow>
+											<MDBCol><Requests /></MDBCol>
+											<MDBCol><Friends /></MDBCol>
+										</MDBRow>
 									</MDBCol>
 								)}
 						</MDBCol>

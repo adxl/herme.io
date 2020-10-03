@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { MDBContainer } from 'mdbreact';
 
 class Friends extends Component {
     state = {
@@ -30,8 +31,8 @@ class Friends extends Component {
     			<h2>Your friends :</h2>
     			<ul>
     				{friends && friends.map((f) => (
-    					<li key={f.username}>{f.first_name} {f.last_name}</li>
-    				))}
+    					<li key={f.username}>{f.first_name} {f.last_name}</li>))}
+    				{!friends.length && <p>No Friends</p>}
     			</ul>
     		</Fragment>
     	);

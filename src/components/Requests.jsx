@@ -1,15 +1,44 @@
 import React, { Component, Fragment } from 'react';
+import { MDBBtn } from 'mdbreact';
 
 class Requests extends Component {
-    state = {
-    	requests: [],
-    }
+	state = {
+		requests: [],
+		searchUsername: '',
+		searchedUserData: null,
+	}
 
-    componentDidMount() {
-    	this.fetchRequests();
-    }
+	componentDidMount() {
+		this.fetchRequests();
+	}
 
-    async fetchRequests() {
+	handleInputChange = (e) => {
+		const { value } = e.target;
+		this.setState({ searchUsername: value });
+	}
+
+	searchFriend = () => {
+		const { searchUsername } = this.state;
+		this.setState({ searchedUserData: null });
+
+		fetch(`https://herme-io.herokuapp.com/users/${searchUsername}`, {
+			headers: {
+    			Authorization: localStorage.getItem('token'),
+    		},
+		})
+			.then((response) => {
+				if (!response.ok) { throw new Error(response.status); }
+				return response.json();
+			})
+			.then((searchedUserData) => {
+				console.log(searchedUserData);
+				this.setState({ searchedUserData });
+				this.setState({ searchUsername: '' });
+			})
+			.catch((error) => console.error(`Oops: \n${error}`));
+	}
+
+	async fetchRequests() {
     	await fetch('https://herme-io.herokuapp.com/requests', {
     		headers: {
     			Authorization: localStorage.getItem('token'),
@@ -21,21 +50,41 @@ class Requests extends Component {
     			this.setState({ requests: data });
     		})
     		.catch((error) => console.warn(`Oops: \n${error}`));
-    }
+	}
 
-    render() {
-    	const { requests } = this.state;
+	render() {
+		const { requests } = this.state;
+		const { searchUsername } = this.state;
+		const { searchedUserData } = this.state;
     	return (
     		<Fragment>
     			<h2>Your friend requests :</h2>
     			<ul>
-    				{requests && requests.map((r) => (
-    					<li key={r.usr} />
-    				))}
+    				{requests && requests.map((r) => (<li key={r.usr} />))}
+    				{!requests.length && <p>No requests</p>}
     			</ul>
+    			<hr />
+    			<div>
+    				<input className="form-control mr-sm-2" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.handleInputChange} />
+					<MDBBtn color="default" rounded size="sm" className="mr-auto" onClick={this.searchFriend}> Search </MDBBtn>
+					{searchedUserData
+						&& (
+							<div>
+								<span>
+									{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}
+								</span>
+								{searchedUserData.isFriend
+								&& (
+									<span>
+										<MDBBtn color="success" rounded size="sm" className="mr-auto" onClick={this.addFriend}> Add </MDBBtn>
+									</span>
+								)}
+							</div>
+						)}
+    			</div>
     		</Fragment>
     	);
-    }
+	}
 }
 
 export default Requests;
