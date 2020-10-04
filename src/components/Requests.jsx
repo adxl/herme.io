@@ -31,7 +31,7 @@ class Requests extends Component {
 			body: JSON.stringify(data),
 		};
 
-		fetch('https://herme-io.herokuapp.com/requests/add', options)
+		fetch('https://herme-io.herokuapp.com/requests/invite', options)
 			.then((response) => {
 				if (response.ok) {
 					this.setState({ searchedUserData: null });
@@ -100,10 +100,28 @@ class Requests extends Component {
 								<span>
 									{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}
 								</span>
-								{ !searchedUserData.isFriend && !searchedUserData.isRequested
+								{ !searchedUserData.isFriend && !searchedUserData.isRequested && !searchedUserData.isInvited
 								&& (
 									<span>
-										<MDBBtn color="success" rounded size="sm" className="mr-auto" onClick={this.sendRequest}> Add </MDBBtn>
+										<MDBBtn color="success" rounded size="sm" className="mr-auto" onClick={this.sendRequest}> Add Friend </MDBBtn>
+									</span>
+								)}
+								{ searchedUserData.isFriend
+								&& (
+									<span>
+										<MDBBtn color="success" disabled rounded size="sm" className="mr-auto"> ✓ Friend </MDBBtn>
+									</span>
+								)}
+								{ searchedUserData.isRequested
+								&& (
+									<span>
+										<MDBBtn color="grey" disabled rounded size="sm" className="mr-auto"> ✓ Requested </MDBBtn>
+									</span>
+								)}
+								{ searchedUserData.isInvited
+								&& (
+									<span>
+										<MDBBtn color="grey" disabled rounded size="sm" className="mr-auto"> Invited you </MDBBtn>
 									</span>
 								)}
 							</div>
