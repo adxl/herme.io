@@ -60,6 +60,7 @@ class Requests extends Component {
 			.then((response) => {
 				if (response.ok) {
 					this.fetchRequests();
+					this.setState({ searchedUserData: null });
 				}
 			})
 			.catch((error) => console.log(`caught:${error}`));
@@ -179,7 +180,7 @@ class Requests extends Component {
 								{ searchedUserData.isInvited
 								&& (
 									<span>
-										<MDBBtn color="grey" disabled rounded size="sm" className="mr-auto"> Invited you </MDBBtn>
+										<MDBBtn color="success" value={searchedUserData.userData.username} rounded size="sm" className="mr-auto" onClick={this.acceptInvite}> Accept </MDBBtn>
 									</span>
 								)}
 							</div>
