@@ -40,6 +40,56 @@ class Requests extends Component {
 			.catch((error) => console.log(`caught:${error}`));
 	}
 
+	acceptInvite = (e) => {
+		const { value } = e.target;
+
+		const data = {
+			friend: value,
+		};
+
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('token'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch('https://herme-io.herokuapp.com/requests/accept', options)
+			.then((response) => {
+				if (response.ok) {
+					this.fetchRequests();
+				}
+			})
+			.catch((error) => console.log(`caught:${error}`));
+	}
+
+	denyInvite = (e) => {
+		const { value } = e.target;
+
+		const data = {
+			friend: value,
+		};
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('token'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		alert(`remove ${data.friend}`);
+		// fetch('https://herme-io.herokuapp.com/requests/accept', options)
+		// 	.then((response) => {
+		// 		if (response.ok) {
+		// 			this.setState({ searchedUserData: null });
+		// 		}
+		// 	})
+		// 	.catch((error) => console.log(`caught:${error}`));
+	}
+
 	searchFriend = () => {
 		const { searchUsername } = this.state;
 		this.setState({ searchedUserData: null });
@@ -85,7 +135,15 @@ class Requests extends Component {
     			<ul>
 					{requests.length > 0 && requests.map((r) => (
 						<li key={r.usr}>
-							{r.usr}
+							<div>{r.usr}</div>
+							<div>
+								<span>
+									<MDBBtn color="success" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.acceptInvite}> Accept </MDBBtn>
+								</span>
+								<span>
+									<MDBBtn color="danger" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.denyInvite}> Deny </MDBBtn>
+								</span>
+							</div>
 						</li>
 					))}
     				{!requests.length && <p>No requests</p>}
