@@ -40,6 +40,29 @@ class Requests extends Component {
 			.catch((error) => console.log(`caught:${error}`));
 	}
 
+	cancelRequest = () => {
+		const { searchedUserData } = this.state;
+		const data = {
+			friend: searchedUserData.userData.username,
+		};
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('token'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch('https://herme-io.herokuapp.com/requests/cancel', options)
+			.then((response) => {
+				if (response.ok) {
+					this.setState({ searchedUserData: null });
+				}
+			})
+			.catch((error) => console.log(`caught:${error}`));
+	}
+
 	acceptInvite = (e) => {
 		const { value } = e.target;
 
@@ -68,7 +91,6 @@ class Requests extends Component {
 
 	denyInvite = (e) => {
 		const { value } = e.target;
-
 		const data = {
 			friend: value,
 		};
@@ -175,7 +197,7 @@ class Requests extends Component {
 								{ searchedUserData.isRequested
 								&& (
 									<span>
-										<MDBBtn color="grey" disabled rounded size="sm" className="mr-auto"> ✓ Requested </MDBBtn>
+										<MDBBtn color="grey" rounded size="sm" className="mr-auto" onClick={this.cancelRequest}> ✓ Requested </MDBBtn>
 									</span>
 								)}
 								{ searchedUserData.isInvited
