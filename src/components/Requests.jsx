@@ -72,6 +72,7 @@ class Requests extends Component {
 		const data = {
 			friend: value,
 		};
+
 		const options = {
 			method: 'POST',
 			headers: {
@@ -81,14 +82,14 @@ class Requests extends Component {
 			body: JSON.stringify(data),
 		};
 
-		alert(`remove ${data.friend}`);
-		// fetch('https://herme-io.herokuapp.com/requests/accept', options)
-		// 	.then((response) => {
-		// 		if (response.ok) {
-		// 			this.setState({ searchedUserData: null });
-		// 		}
-		// 	})
-		// 	.catch((error) => console.log(`caught:${error}`));
+		fetch('https://herme-io.herokuapp.com/requests/deny', options)
+			.then((response) => {
+				if (response.ok) {
+					this.fetchRequests();
+					this.setState({ searchedUserData: null });
+				}
+			})
+			.catch((error) => console.log(`caught:${error}`));
 	}
 
 	searchFriend = () => {
