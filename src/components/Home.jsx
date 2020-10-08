@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { MDBNav, MDBNavItem, MDBNavLink, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import Feed from './Feed';
 import Posts from './Posts';
 import Friends from './Friends';
 import Requests from './Requests';
@@ -69,7 +70,9 @@ class Home extends Component {
 						<MDBCol className="feed-col">
 							{currentPage === 'home'
 								&& (
-									<MDBCol>home</MDBCol>
+									<MDBCol>
+										<Feed />
+									</MDBCol>
 								)}
 							{currentPage === 'posts'
 								&& (
