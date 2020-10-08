@@ -94,9 +94,9 @@ class Posts extends Component {
 					<br />
 					<ul>
     				{posts && posts.map((p) => (
-							<li key={p.id_post}>
+							<li key={p.id_post} className="post-li">
 								<Post data={p} />
-								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost}>X</MDBBtn>
+								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost} className="del-post-btn">X</MDBBtn>
 							</li>
 						))}
 					</ul>

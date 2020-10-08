@@ -161,8 +161,19 @@ p {
   width: 50%;
 }
 
+.post-li {
+  position: relative !important;
+}
+
+.del-post-btn {
+  position: absolute !important;
+  top: 0;
+  right: 25%;
+  padding: 5px;
+}
+
 /*    DEBUG    STUFF      */
 
 .bor-red {
-  border: dashed 2px
+  border: dashed 2px red;
 }
