@@ -21,7 +21,7 @@ class Feed extends Component {
     		.then((data) => {
     			this.setState({ posts: data });
     		})
-    		.catch((error) => console.err(`Oops: \n${error}`));
+    		.catch((error) => console.error(`Oops: \n${error}`));
     }
 
     render() {

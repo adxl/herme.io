@@ -71,7 +71,8 @@ class Posts extends Component {
     		},
     	})
     		.then((response) => response.json())
-    		.then((data) => {
+			.then((data) => {
+				console.log(data);
     			this.setState({ posts: data });
     		})
     		.catch((error) => console.err(`Oops: \n${error}`));

@@ -42,7 +42,7 @@ class Home extends Component {
 	render() {
 		const { user } = this.state;
 		const { currentPage } = this.state;
-		console.log(user);
+		// console.log(user);
 
 		return (
 			<Fragment>
