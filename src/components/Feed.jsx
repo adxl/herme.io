@@ -36,6 +36,7 @@ class Feed extends Component {
     				{posts && posts.map((p) => (
     						<li key={p.id_post}>
     							<Post data={p} />
+    							<hr />
     						</li>
     					))}
     				</ul>
