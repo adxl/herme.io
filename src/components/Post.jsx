@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { MDBBtn } from 'mdbreact';
 
 class Post extends Component {
 	state = {
@@ -29,15 +30,28 @@ class Post extends Component {
 		console.log(data);
 		return (
 			<Fragment>
-				<div className="post-header">
-					<img className="author-pic" src={`https://robohash.org/${data.author}`} alt="" />
-					<div className="author-name">
-						<p>{userData && userData.userData.first_name} {userData && userData.userData.last_name}</p>
-						<p>@{data.author}</p>
+				<div className="post-div">
+					<div className="post-header">
+						<img className="author-pic" src={`https://robohash.org/${data.author}`} alt="" />
+						<div className="author-name">
+							<p>{userData && userData.userData.first_name} {userData && userData.userData.last_name}</p>
+							<p>@{data.author}</p>
+						</div>
+					</div>
+					<br />
+					<div className="content-div">
+						<p>{data.content}</p>
+					</div>
+					<hr />
+					<div className="react-div">
+						<div className="like-div">
+							<MDBBtn color="white">Like ({data.likes_count}) </MDBBtn>
+						</div>
+						<div className="comment-div">
+							<MDBBtn color="white">Comment</MDBBtn>
+						</div>
 					</div>
 				</div>
-				<br />
-				<p>{data.content}</p>
 			</Fragment>
 		);
 	}
