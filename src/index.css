@@ -204,7 +204,7 @@ p {
   background-color: #fff;
   padding: 10px;
   border-radius: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   border-bottom: solid 1px #afaeae;
   border-left: solid 1px #c3c3c3;
   border-right: solid 1px #c3c3c3;
@@ -286,6 +286,14 @@ p {
   width: 100%;
   padding: 5px 3px !important;
 }
+
+/* FRIEND SEARCH  */
+
+.f-search-div {
+  width: 80%;
+}
+
+.f-search-input {}
 
 /*    DEBUG    STUFF      */
 

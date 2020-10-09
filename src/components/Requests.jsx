@@ -6,6 +6,8 @@ class Requests extends Component {
 		requests: [],
 		searchUsername: '',
 		searchedUserData: null,
+		userNotFound: false,
+		userSelf: false,
 	}
 
 	componentDidMount() {
@@ -114,23 +116,34 @@ class Requests extends Component {
 			.catch((error) => console.log(`caught:${error}`));
 	}
 
-	searchFriend = () => {
-		const { searchUsername } = this.state;
+	searchFriend = (e) => {
+		const { value } = e.target;
 		this.setState({ searchedUserData: null });
+		this.setState({ searchUsername: value });
 
-		fetch(`https://herme-io.herokuapp.com/users/${searchUsername}`, {
+		fetch(`https://herme-io.herokuapp.com/users/${value}`, {
 			headers: {
 				Authorization: localStorage.getItem('token'),
 			},
 		})
 			.then((response) => {
+				switch (response.status) {
+				case 404:
+					this.setState({ userNotFound: true });
+					return null;
+				case 400:
+					this.setState({ userSelf: true });
+					return null;
+				default: break;
+				}
 				if (!response.ok) { throw new Error(response.status); }
 				return response.json();
 			})
 			.then((searchedUserData) => {
-				console.log(searchedUserData);
-				this.setState({ searchedUserData });
-				this.setState({ searchUsername: '' });
+				if (searchedUserData) {
+					this.setState({ searchedUserData });
+					this.setState({ userNotFound: false });
+				}
 			})
 			.catch((error) => console.error(`Oops: \n${error}`));
 	}
@@ -143,7 +156,6 @@ class Requests extends Component {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				this.setState({ requests: data });
 			})
 			.catch((error) => console.warn(`Oops: \n${error}`));
@@ -153,7 +165,11 @@ class Requests extends Component {
 		const { requests } = this.state;
 		const { searchUsername } = this.state;
 		const { searchedUserData } = this.state;
-		console.log(requests);
+		const { userNotFound } = this.state;
+		const { userSelf } = this.state;
+
+		console.log(userNotFound);
+
 		return (
 			<Fragment>
 				<h2>Your friend requests :</h2>
@@ -176,16 +192,24 @@ class Requests extends Component {
 					{!requests.length && <p>No requests</p>}
 				</ul>
 				<hr />
+				<br />
+				<h2> Add friend :</h2>
 				<div>
-					<input className="form-control mr-sm-2" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.handleInputChange} />
-					<MDBBtn color="default" rounded size="sm" className="mr-auto" onClick={this.searchFriend}> Search </MDBBtn>
+					<div className="f-search-div">
+						<input className="form-control mr-sm-2 f-search-input" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.searchFriend} />
+						{/* <input className="form-control mr-sm-2 f-search-input" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.handleInputChange} /> */}
+						{/* <MDBBtn color="default" rounded size="sm" className="mr-auto f-search-btn" onClick={this.searchFriend}> Search </MDBBtn> */}
+					</div>
 					{searchedUserData
 						&& (
 							<div>
-								<span>
-									{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}
-								</span>
-								{ !searchedUserData.isFriend && !searchedUserData.isRequested && !searchedUserData.isInvited
+								{!searchedUserData.me
+								&& (
+									<span>
+										{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}
+									</span>
+								)}
+								{ !searchedUserData.isFriend && !searchedUserData.isRequested && !searchedUserData.isInvited && !searchedUserData.me
 								&& (
 									<span>
 										<MDBBtn color="success" rounded size="sm" className="mr-auto" onClick={this.sendRequest}> Add Friend </MDBBtn>
@@ -211,6 +235,8 @@ class Requests extends Component {
 								)}
 							</div>
 						)}
+					{ (userNotFound && searchUsername) && <p>Not found</p> }
+					{ searchedUserData && searchedUserData.me && <p>It seems that it&apos;s you :)</p> }
 				</div>
 			</Fragment>
 		);

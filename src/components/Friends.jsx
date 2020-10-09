@@ -42,7 +42,6 @@ class Friends extends Component {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				this.setState({ friends: data });
 			})
 			.catch((error) => console.warn(`Oops: \n${error}`));
