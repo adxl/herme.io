@@ -19,7 +19,7 @@ class Feed extends Component {
     	})
     		.then((response) => response.json())
     		.then((data) => {
-    			this.setState({ posts: data });
+    			this.setState({ posts: data.reverse() });
     		})
     		.catch((error) => console.error(`Oops: \n${error}`));
     }

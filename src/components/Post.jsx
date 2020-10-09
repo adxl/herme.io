@@ -45,7 +45,7 @@ class Post extends Component {
 					<hr />
 					<div className="react-div">
 						<div className="like-div">
-							<MDBBtn color="white">Like ({data.likes_count}) </MDBBtn>
+							<MDBBtn color="info">Like ({data.likes_count}) </MDBBtn>
 						</div>
 						<div className="comment-div">
 							<MDBBtn color="white">Comment</MDBBtn>

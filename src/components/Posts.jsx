@@ -73,7 +73,7 @@ class Posts extends Component {
     		.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
-    			this.setState({ posts: data });
+    			this.setState({ posts: data.reverse() });
     		})
     		.catch((error) => console.err(`Oops: \n${error}`));
 	}
