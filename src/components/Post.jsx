@@ -29,7 +29,6 @@ class Post extends Component {
 	render() {
 		const { data } = this.props;
 		const { userData } = this.state;
-		console.log(data);
 		return (
 			<Fragment>
 				<div className="post-div">

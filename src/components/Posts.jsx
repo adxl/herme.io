@@ -44,7 +44,8 @@ class Posts extends Component {
 	}
 
 	deletePost = (e) => {
-		const { id } = e.target;
+		const id = e.target.id || e.target.parentElement.id;
+
 		const data = {
 			id,
 		};
@@ -99,7 +100,7 @@ class Posts extends Component {
 							<li key={p.id_post} className="post-li">
 								<Post data={p} />
 								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost} className="del-post-btn">
-									<FontAwesomeIcon icon={faTimes} />
+									<FontAwesomeIcon id={p.id_post} icon={faTimes} />
 								</MDBBtn>
 							</li>
 						))}
