@@ -120,8 +120,8 @@ class Requests extends Component {
 
 		fetch(`https://herme-io.herokuapp.com/users/${searchUsername}`, {
 			headers: {
-    			Authorization: localStorage.getItem('token'),
-    		},
+				Authorization: localStorage.getItem('token'),
+			},
 		})
 			.then((response) => {
 				if (!response.ok) { throw new Error(response.status); }
@@ -136,45 +136,48 @@ class Requests extends Component {
 	}
 
 	async fetchRequests() {
-    	await fetch('https://herme-io.herokuapp.com/requests', {
-    		headers: {
-    			Authorization: localStorage.getItem('token'),
-    		},
-    	})
-    		.then((response) => response.json())
-    		.then((data) => {
-    			console.log(data);
-    			this.setState({ requests: data });
-    		})
-    		.catch((error) => console.warn(`Oops: \n${error}`));
+		await fetch('https://herme-io.herokuapp.com/requests', {
+			headers: {
+				Authorization: localStorage.getItem('token'),
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				this.setState({ requests: data });
+			})
+			.catch((error) => console.warn(`Oops: \n${error}`));
 	}
 
 	render() {
 		const { requests } = this.state;
 		const { searchUsername } = this.state;
 		const { searchedUserData } = this.state;
-    	return (
-    		<Fragment>
-    			<h2>Your friend requests :</h2>
-    			<ul>
+		console.log(requests);
+		return (
+			<Fragment>
+				<h2>Your friend requests :</h2>
+				<ul>
 					{requests.length > 0 && requests.map((r) => (
 						<li key={r.usr}>
-							<div>{r.usr}</div>
-							<div>
-								<span>
+							<div className="r-div">
+								<img className="r-pic" src={`https://robohash.org/${r.usr}?set=set5`} alt="" />
+								<div className="r-info">
+									{/* <p className="r-fullname">{r.first_name} {r.last_name}</p> */}
+									<p className="r-username">@{r.usr}</p>
+								</div>
+								<div className="r-actions-div">
 									<MDBBtn color="success" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.acceptInvite}> Accept </MDBBtn>
-								</span>
-								<span>
 									<MDBBtn color="danger" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.denyInvite}> Deny </MDBBtn>
-								</span>
+								</div>
 							</div>
 						</li>
 					))}
-    				{!requests.length && <p>No requests</p>}
-    			</ul>
-    			<hr />
-    			<div>
-    				<input className="form-control mr-sm-2" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.handleInputChange} />
+					{!requests.length && <p>No requests</p>}
+				</ul>
+				<hr />
+				<div>
+					<input className="form-control mr-sm-2" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.handleInputChange} />
 					<MDBBtn color="default" rounded size="sm" className="mr-auto" onClick={this.searchFriend}> Search </MDBBtn>
 					{searchedUserData
 						&& (
@@ -208,9 +211,9 @@ class Requests extends Component {
 								)}
 							</div>
 						)}
-    			</div>
-    		</Fragment>
-    	);
+				</div>
+			</Fragment>
+		);
 	}
 }
 
