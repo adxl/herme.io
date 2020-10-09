@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { MDBContainer, MDBInput, MDBBtn } from 'mdbreact';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Post from './Post';
 
 class Posts extends Component {
@@ -96,7 +98,9 @@ class Posts extends Component {
     				{posts && posts.map((p) => (
 							<li key={p.id_post} className="post-li">
 								<Post data={p} />
-								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost} className="del-post-btn">X</MDBBtn>
+								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost} className="del-post-btn">
+									<FontAwesomeIcon icon={faTimes} />
+								</MDBBtn>
 							</li>
 						))}
 					</ul>

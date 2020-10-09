@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { MDBBtn } from 'mdbreact';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-regular-svg-icons';
 
 class Post extends Component {
 	state = {
@@ -45,10 +47,14 @@ class Post extends Component {
 					<hr />
 					<div className="react-div">
 						<div className="like-div">
-							<MDBBtn color="info">Like ({data.likes_count}) </MDBBtn>
+							<MDBBtn color="primary">
+								<FontAwesomeIcon icon={faThumbsUp} /> ({data.likes_count})
+							</MDBBtn>
 						</div>
 						<div className="comment-div">
-							<MDBBtn color="white">Comment</MDBBtn>
+							<MDBBtn color="grey">
+								<FontAwesomeIcon icon={faThumbsDown} /> (0)
+							</MDBBtn>
 						</div>
 					</div>
 				</div>
