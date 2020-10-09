@@ -33,7 +33,7 @@ class Post extends Component {
 			<Fragment>
 				<div className="post-div">
 					<div className="post-header">
-						<img className="author-pic" src={`https://robohash.org/${data.author}`} alt="" />
+						<img className="author-pic" src={`https://robohash.org/${data.author}?set=set5`} alt="" />
 						<div className="author-name">
 							<p>{userData && userData.userData.first_name} {userData && userData.userData.last_name}</p>
 							<p>@{data.author}</p>
