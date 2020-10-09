@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react';
 import { MDBContainer, MDBBtn } from 'mdbreact';
 
 class Friends extends Component {
-    state = {
-    	friends: [],
-    }
+	state = {
+		friends: [],
+	}
 
-    componentDidMount() {
-    	this.fetchFriends();
-    }
+	componentDidMount() {
+		this.fetchFriends();
+	}
 
 	removeFriend = (e) => {
 		const { value } = e.target;
@@ -35,40 +35,43 @@ class Friends extends Component {
 	}
 
 	async fetchFriends() {
-    	await fetch('https://herme-io.herokuapp.com/friends', {
-    		headers: {
-    			Authorization: localStorage.getItem('token'),
-    		},
-    	})
-    		.then((response) => response.json())
-    		.then((data) => {
-    			console.log(data);
-    			this.setState({ friends: data });
-    		})
-    		.catch((error) => console.warn(`Oops: \n${error}`));
+		await fetch('https://herme-io.herokuapp.com/friends', {
+			headers: {
+				Authorization: localStorage.getItem('token'),
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				this.setState({ friends: data });
+			})
+			.catch((error) => console.warn(`Oops: \n${error}`));
 	}
 
 	render() {
-    	const { friends } = this.state;
-    	return (
-    		<Fragment>
-    			<h2>Your friends :</h2>
-    			<ul>
-    				{friends.length > 0 && friends.map((f) => (
-    					<li key={f.username}>
-    						<div>
-    							<span>{f.first_name} {f.last_name}</span>
-    							<span>
-    								<MDBBtn color="danger" value={f.username} rounded size="sm" className="mr-auto" onClick={this.removeFriend}> X </MDBBtn>
-    							</span>
-    						</div>
-    					</li>
-    				))}
-
-    				{!friends.length && <p>No Friends</p>}
-    			</ul>
-    		</Fragment>
-    	);
+		const { friends } = this.state;
+		return (
+			<Fragment>
+				<h2>Your friends :</h2>
+				<ul>
+					{friends.length > 0 && friends.map((f) => (
+						<li key={f.username}>
+							<div className="friend-div">
+								<div className="friend-info">
+									<p className="friend-fullname">{f.first_name} {f.last_name}</p>
+									<p className="friend-username">@{f.username}</p>
+								</div>
+								<div className="friend-del-btn-div">
+									<MDBBtn color="danger" value={f.username} rounded size="sm" className="mr-auto" onClick={this.removeFriend}> X </MDBBtn>
+								</div>
+							</div>
+							<hr />
+						</li>
+					))}
+					{!friends.length && <p>No Friends</p>}
+				</ul>
+			</Fragment>
+		);
 	}
 }
 

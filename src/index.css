@@ -196,6 +196,29 @@ p {
   text-align: center;
 }
 
+/* FRIENDS */
+
+.friend-div {
+  width: 100%;
+  overflow: hidden;
+}
+
+.friend-info {
+  width: 80%;
+  float: left;
+}
+
+.friend-fullname {}
+
+.friend-username {
+  color: gray;
+}
+
+.friend-del-btn-div {
+  width: 20%;
+  float: left;
+}
+
 /*    DEBUG    STUFF      */
 
 .bor-red {
