@@ -29,7 +29,7 @@ class Feed extends Component {
 
     	return (
     		<Fragment>
-    			<MDBContainer fluid className="feed-div">
+    			<MDBContainer fluid>
     				<ul>
     				{posts && posts.map((p) => (
     						<li key={p.id_post}>

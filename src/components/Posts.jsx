@@ -84,14 +84,14 @@ class Posts extends Component {
 
     	return (
     		<Fragment>
+				<MDBContainer fluid>
+					<div className="create-post-div">
+						<MDBInput className="create-post-input" label="Create a post" outline value={newPostContent} onChange={this.handleInputChange} />
+	    				{/* <MDBInput label="" className="create-post-input" value={newPostContent} onChange={this.handleInputChange} /> */}
+	    				<MDBBtn color="primary" className="create-post-btn" onClick={this.createPost}>Post</MDBBtn>
+					</div>
+				</MDBContainer>
     			<MDBContainer fluid>
-    				<MDBInput label="Create a post" value={newPostContent} onChange={this.handleInputChange} />
-    				<MDBBtn color="primary" onClick={this.createPost}>Post</MDBBtn>
-    			</MDBContainer>
-    			<br />
-    			<MDBContainer fluid>
-    				<h2>My posts : </h2>
-					<br />
 					<ul>
     				{posts && posts.map((p) => (
 							<li key={p.id_post} className="post-li">

@@ -9,6 +9,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 li {
   list-style: none;
 }
@@ -88,13 +93,28 @@ p {
   height: 93vh;
   overflow-y: scroll;
   background-color: #ececec;
-}
-
-.feed-div {
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 /*  POSTS  */
+
+.create-post-div {
+  width: 75%;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #afaeae;
+  border-left: solid 1px #c3c3c3;
+  border-right: solid 1px #c3c3c3;
+}
+
+.create-post-btn {
+  width: 100%;
+  margin: 0;
+  border-radius: 10px;
+}
 
 .post-div {
   overflow: hidden;
