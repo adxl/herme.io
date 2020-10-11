@@ -172,7 +172,7 @@ class Requests extends Component {
 					{requests.length > 0 && requests.map((r) => (
 						<li key={r.usr}>
 							<div className="r-div">
-								<img className="r-pic" src={`https://robohash.org/${r.usr}?set=set5`} alt="" />
+								<img className="r-pic" src={`https://robohash.org/${r.usr}`} alt="" />
 								<div className="r-info">
 									{/* <p className="r-fullname">{r.first_name} {r.last_name}</p> */}
 									<p className="r-username">@{r.usr}</p>

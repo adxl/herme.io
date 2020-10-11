@@ -48,7 +48,7 @@ class Home extends Component {
 						<MDBCol size="2" className="profile-col">
 							<MDBContainer className="profile-info">
 								<MDBContainer className="profile-pic">
-									{user && <img src={`https://robohash.org/${user.username}?set=set5`} alt="profile_pic" />}
+									{user && <img src={`https://robohash.org/${user.username}`} alt="profile_pic" />}
 								</MDBContainer>
 								<MDBContainer className="profile-name">
 									{user && `${user.first_name} ${user.last_name}`}
