@@ -168,8 +168,6 @@ class Requests extends Component {
 		const { userNotFound } = this.state;
 		const { userSelf } = this.state;
 
-		console.log(userNotFound);
-
 		return (
 			<Fragment>
 				<h2>Your friend requests :</h2>
@@ -202,7 +200,7 @@ class Requests extends Component {
 					</div>
 					{searchedUserData
 						&& (
-							<div>
+							<div className="f-search-result">
 								{!searchedUserData.me
 								&& (
 									<span>
@@ -235,8 +233,16 @@ class Requests extends Component {
 								)}
 							</div>
 						)}
-					{ (userNotFound && searchUsername) && <p>Not found</p> }
-					{ searchedUserData && searchedUserData.me && <p>It seems that it&apos;s you :)</p> }
+					{ (userNotFound && searchUsername) && (
+						<div className="f-search-result">
+							<p>Not found</p>
+						</div>
+					) }
+					{ searchedUserData && searchedUserData.me && (
+						<div className="f-search-result">
+							<p>It seems that it&apos;s you :)</p>
+						</div>
+					) }
 				</div>
 			</Fragment>
 		);

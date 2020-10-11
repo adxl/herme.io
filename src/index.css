@@ -295,6 +295,10 @@ p {
 
 .f-search-input {}
 
+.f-search-result {
+  margin: 12px 10px;
+}
+
 /*    DEBUG    STUFF      */
 
 .bor-red {
