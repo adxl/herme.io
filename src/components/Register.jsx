@@ -50,7 +50,7 @@ class Register extends Component {
 			.then((data) => {
 				if (data.ok) { window.location.replace('/login'); }
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	render() {

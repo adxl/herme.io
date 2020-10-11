@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { MDBNav, MDBNavItem, MDBNavLink, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import PropTypes from 'prop-types';
+import { MDBNav, MDBNavLink, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import Feed from './Feed';
 import Posts from './Posts';
 import Friends from './Friends';
@@ -9,7 +9,6 @@ import Requests from './Requests';
 class Home extends Component {
 	state = {
 		user: null,
-		page: null,
 	}
 
 	componentDidMount() {
@@ -21,11 +20,6 @@ class Home extends Component {
 		window.location.replace('/login');
 	}
 
-	// changePage = (e) => {
-	// 	const { name } = e.target;
-	// 	this.setState({ page: name });
-	// }
-
 	async fetchUser() {
 		await fetch('https://herme-io.herokuapp.com/dash/', {
 			headers: {
@@ -36,14 +30,13 @@ class Home extends Component {
 			.then((data) => {
 				this.setState({ user: data });
 			})
-			.catch((error) => console.warn(`Oops: \n${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	render() {
 		const { location } = this.props;
 		const page = location.pathname.substr(1);
 		const { user } = this.state;
-		// console.log(user);
 
 		return (
 			<Fragment>
@@ -98,5 +91,9 @@ class Home extends Component {
 		);
 	}
 }
+
+Home.propTypes = {
+	location: PropTypes.string.isRequired,
+};
 
 export default Home;

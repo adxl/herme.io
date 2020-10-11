@@ -19,7 +19,7 @@ class Posts extends Component {
 		this.setState({ newPostContent: value });
 	}
 
-	createPost = (e) => {
+	createPost = () => {
 		const { newPostContent } = this.state;
 		const data = {
 			content: newPostContent,
@@ -40,7 +40,7 @@ class Posts extends Component {
 					this.fetchPosts();
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	deletePost = (e) => {
@@ -64,7 +64,7 @@ class Posts extends Component {
 					this.fetchPosts();
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	async fetchPosts() {
@@ -77,7 +77,7 @@ class Posts extends Component {
 			.then((data) => {
     			this.setState({ posts: data.reverse() });
     		})
-    		.catch((error) => console.err(`Oops: \n${error}`));
+    		.catch((error) => { throw error; });
 	}
 
 	render() {
@@ -89,7 +89,6 @@ class Posts extends Component {
 				<MDBContainer fluid>
 					<div className="create-post-div">
 						<MDBInput className="create-post-input" label="Create a post" outline value={newPostContent} onChange={this.handleInputChange} />
-	    				{/* <MDBInput label="" className="create-post-input" value={newPostContent} onChange={this.handleInputChange} /> */}
 	    				<MDBBtn color="primary" className="create-post-btn" onClick={this.createPost}>Post</MDBBtn>
 					</div>
 				</MDBContainer>

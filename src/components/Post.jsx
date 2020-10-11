@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { MDBBtn } from 'mdbreact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-regular-svg-icons';
@@ -23,7 +24,7 @@ class Post extends Component {
 			.then((responseData) => {
 				this.setState({ userData: responseData });
 			})
-			.catch((error) => console.warn(`Oops: \n${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	render() {
@@ -61,5 +62,13 @@ class Post extends Component {
 		);
 	}
 }
+
+Post.propTypes = {
+	data: PropTypes.objectOf(PropTypes.object),
+};
+
+Post.defaultProps = {
+	data: '',
+};
 
 export default Post;

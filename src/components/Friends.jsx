@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { MDBContainer, MDBBtn } from 'mdbreact';
+import { MDBBtn } from 'mdbreact';
 
 class Friends extends Component {
 	state = {
@@ -31,7 +31,7 @@ class Friends extends Component {
 					this.fetchFriends();
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	async fetchFriends() {
@@ -44,7 +44,7 @@ class Friends extends Component {
 			.then((data) => {
 				this.setState({ friends: data });
 			})
-			.catch((error) => console.warn(`Oops: \n${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	render() {

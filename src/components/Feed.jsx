@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { MDBContainer, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer } from 'mdbreact';
 import Post from './Post';
 
 class Feed extends Component {
@@ -21,7 +21,7 @@ class Feed extends Component {
     		.then((data) => {
     			this.setState({ posts: data.reverse() });
     		})
-    		.catch((error) => console.error(`Oops: \n${error}`));
+    		.catch((error) => { throw error; });
     }
 
     render() {

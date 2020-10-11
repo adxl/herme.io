@@ -7,7 +7,6 @@ class Requests extends Component {
 		searchUsername: '',
 		searchedUserData: null,
 		userNotFound: false,
-		userSelf: false,
 	}
 
 	componentDidMount() {
@@ -39,7 +38,9 @@ class Requests extends Component {
 					this.setState({ searchedUserData: null });
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => {
+				throw error;
+			});
 	}
 
 	cancelRequest = () => {
@@ -62,7 +63,7 @@ class Requests extends Component {
 					this.setState({ searchedUserData: null });
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	acceptInvite = (e) => {
@@ -88,7 +89,7 @@ class Requests extends Component {
 					this.setState({ searchedUserData: null });
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	denyInvite = (e) => {
@@ -113,7 +114,7 @@ class Requests extends Component {
 					this.setState({ searchedUserData: null });
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	searchFriend = (e) => {
@@ -127,14 +128,9 @@ class Requests extends Component {
 			},
 		})
 			.then((response) => {
-				switch (response.status) {
-				case 404:
+				if (response.status === 404) {
 					this.setState({ userNotFound: true });
 					return null;
-				case 400:
-					this.setState({ userSelf: true });
-					return null;
-				default: break;
 				}
 				if (!response.ok) { throw new Error(response.status); }
 				return response.json();
@@ -145,7 +141,9 @@ class Requests extends Component {
 					this.setState({ userNotFound: false });
 				}
 			})
-			.catch((error) => console.error(`Oops: \n${error}`));
+			.catch((error) => {
+				throw error;
+			});
 	}
 
 	async fetchRequests() {
@@ -158,7 +156,7 @@ class Requests extends Component {
 			.then((data) => {
 				this.setState({ requests: data });
 			})
-			.catch((error) => console.warn(`Oops: \n${error}`));
+			.catch((error) => { throw error; });
 	}
 
 	render() {
@@ -166,7 +164,6 @@ class Requests extends Component {
 		const { searchUsername } = this.state;
 		const { searchedUserData } = this.state;
 		const { userNotFound } = this.state;
-		const { userSelf } = this.state;
 
 		return (
 			<Fragment>

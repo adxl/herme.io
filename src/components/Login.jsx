@@ -34,7 +34,7 @@ class Login extends Component {
 					window.location.replace('/home');
 				}
 			})
-			.catch((error) => console.log(`caught:${error}`));
+			.catch((error) => { throw error; });
 	};
 
 	render() {

@@ -225,8 +225,6 @@ p {
   float: left;
 }
 
-.friend-fullname {}
-
 .friend-username {
   color: gray;
 }
@@ -272,8 +270,6 @@ p {
   float: left;
 }
 
-.r-fullname {}
-
 .r-username {
   color: gray;
 }
@@ -292,8 +288,6 @@ p {
 .f-search-div {
   width: 80%;
 }
-
-.f-search-input {}
 
 .f-search-result {
   margin: 12px 10px;
