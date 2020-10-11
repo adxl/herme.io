@@ -10,7 +10,6 @@ function App() {
 			<BrowserRouter>
 				{/* token: true */}
 				<Switch>
-					{localStorage.getItem('token') && <Route exact path="/" component={Home} />}
 					{localStorage.getItem('token') && <Route path="/*" component={Home} />}
 				</Switch>
 

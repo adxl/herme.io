@@ -9,7 +9,7 @@ import Requests from './Requests';
 class Home extends Component {
 	state = {
 		user: null,
-		currentPage: 'home',
+		page: null,
 	}
 
 	componentDidMount() {
@@ -21,10 +21,10 @@ class Home extends Component {
 		window.location.replace('/login');
 	}
 
-	changePage = (e) => {
-		const { name } = e.target;
-		this.setState({ currentPage: name });
-	}
+	// changePage = (e) => {
+	// 	const { name } = e.target;
+	// 	this.setState({ page: name });
+	// }
 
 	async fetchUser() {
 		await fetch('https://herme-io.herokuapp.com/dash/', {
@@ -40,8 +40,9 @@ class Home extends Component {
 	}
 
 	render() {
+		const { location } = this.props;
+		const page = location.pathname.substr(1);
 		const { user } = this.state;
-		const { currentPage } = this.state;
 		// console.log(user);
 
 		return (
@@ -62,26 +63,26 @@ class Home extends Component {
 							</MDBContainer>
 							<MDBContainer className="profile-menu">
 								<MDBNav className="flex-column profile-nav">
-									<MDBNavLink name="home" to="#" onClick={this.changePage}>Home</MDBNavLink>
-									<MDBNavLink name="posts" to="#" onClick={this.changePage}>Posts</MDBNavLink>
-									<MDBNavLink name="friends" to="#" onClick={this.changePage}>Friends</MDBNavLink>
+									<MDBNavLink name="home" to="/home">Home</MDBNavLink>
+									<MDBNavLink name="posts" to="/posts">Posts</MDBNavLink>
+									<MDBNavLink name="friends" to="/friends">Friends</MDBNavLink>
 								</MDBNav>
 							</MDBContainer>
 						</MDBCol>
 						<MDBCol className="feed-col">
-							{currentPage === 'home'
+							{page === 'home'
 								&& (
 									<MDBCol>
 										<Feed />
 									</MDBCol>
 								)}
-							{currentPage === 'posts'
+							{page === 'posts'
 								&& (
 									<MDBCol>
 										<Posts />
 									</MDBCol>
 								)}
-							{currentPage === 'friends'
+							{page === 'friends'
 								&& (
 									<MDBCol>
 										<MDBRow>
