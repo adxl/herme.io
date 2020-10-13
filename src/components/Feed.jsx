@@ -37,6 +37,7 @@ class Feed extends Component {
     						</li>
     					))}
     				</ul>
+    				{posts.length <= 0 && <p>No posts</p>}
     			</MDBContainer>
     		</Fragment>
     	);

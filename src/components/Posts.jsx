@@ -103,6 +103,8 @@ class Posts extends Component {
 							</li>
 						))}
 					</ul>
+    				{posts.length <= 0 && <p className="no-p-msg"> You currently have no posts.</p>}
+
     			</MDBContainer>
     		</Fragment>
     	);
