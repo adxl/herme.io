@@ -92,7 +92,6 @@ class Friends extends Component {
 					<br />
 					<h4>People you may know :</h4>
 					<ul>
-
 						{newFriends.length > 0 && newFriends.map((f) => (
 							<li key={f.username}>
 								<div className="friend-div">

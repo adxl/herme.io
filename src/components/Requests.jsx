@@ -201,34 +201,41 @@ class Requests extends Component {
 							<div className="f-search-result">
 								{!searchedUserData.me
 								&& (
-									<span>
-										{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}
-									</span>
-								)}
-								{ !searchedUserData.isFriend && !searchedUserData.isRequested && !searchedUserData.isInvited && !searchedUserData.me
+									<div className="friend-div">
+										<img className="friend-pic" src={`https://robohash.org/${searchedUserData.userData.username}`} alt="" />
+										<div className="friend-info">
+											<p className="friend-fullname">{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}</p>
+											<p className="friend-username">@{searchedUserData.userData.username}</p>
+										</div>
+										<div className="friend-del-btn-div">
+											{ !searchedUserData.isFriend && !searchedUserData.isRequested && !searchedUserData.isInvited && !searchedUserData.me
 								&& (
 									<span>
 										<MDBBtn color="success" rounded size="sm" className="mr-auto" onClick={this.sendRequest}> Add Friend </MDBBtn>
 									</span>
 								)}
-								{ searchedUserData.isFriend
+											{ searchedUserData.isFriend
 								&& (
 									<span>
 										<MDBBtn color="success" disabled rounded size="sm" className="mr-auto"> ✓ Friend </MDBBtn>
 									</span>
 								)}
-								{ searchedUserData.isRequested
+											{ searchedUserData.isRequested
 								&& (
 									<span>
 										<MDBBtn color="grey" rounded size="sm" className="mr-auto" onClick={this.cancelRequest}> ✓ Requested </MDBBtn>
 									</span>
 								)}
-								{ searchedUserData.isInvited
+											{ searchedUserData.isInvited
 								&& (
 									<span>
 										<MDBBtn color="success" value={searchedUserData.userData.username} rounded size="sm" className="mr-auto" onClick={this.acceptInvite}> Accept </MDBBtn>
 									</span>
 								)}
+										</div>
+									</div>
+								)}
+
 							</div>
 						)}
 						{ (userNotFound && searchUsername) && (
