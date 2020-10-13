@@ -100,13 +100,9 @@ class Friends extends Component {
 										<p className="friend-fullname">{f.first_name} {f.last_name}</p>
 										<p className="friend-username">@{f.username}</p>
 									</div>
-									<div className="friend-del-btn-div">
-										<MDBBtn color="danger" value={f.username} rounded size="sm" className="mr-auto" onClick={this.removeFriend}> Unfriend </MDBBtn>
-									</div>
 								</div>
 							</li>
 						))}
-						{!newFriends.length && <p>No Friends</p>}
 					</ul>
 				</div>
 			</Fragment>
