@@ -201,7 +201,7 @@ p {
 .del-post-btn {
   position: absolute !important;
   top: 0;
-  right: 25%;
+  right: 0;
   padding: 0 2px;
   border-radius: 50%;
   height: 20px;

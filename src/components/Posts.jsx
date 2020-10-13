@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { MDBContainer, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBInput, MDBBtn } from 'mdbreact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Post from './Post';
@@ -86,26 +86,21 @@ class Posts extends Component {
 
     	return (
     		<Fragment>
-				<MDBContainer fluid>
-					<div className="create-post-div">
-						<MDBInput className="create-post-input" label="Create a post" outline value={newPostContent} onChange={this.handleInputChange} />
+				<div className="create-post-div">
+					<MDBInput className="create-post-input" label="Create a post" outline value={newPostContent} onChange={this.handleInputChange} />
 	    				<MDBBtn color="primary" className="create-post-btn" onClick={this.createPost}>Post</MDBBtn>
-					</div>
-				</MDBContainer>
-    			<MDBContainer fluid>
-					<ul>
+				</div>
+				<ul>
     				{posts && posts.map((p) => (
-							<li key={p.id_post} className="post-li">
-								<Post data={p} />
-								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost} className="del-post-btn">
-									<FontAwesomeIcon id={p.id_post} icon={faTimes} />
-								</MDBBtn>
-							</li>
-						))}
-					</ul>
+						<li key={p.id_post} className="post-li">
+							<Post data={p} />
+							<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost} className="del-post-btn">
+								<FontAwesomeIcon id={p.id_post} icon={faTimes} />
+							</MDBBtn>
+						</li>
+					))}
+				</ul>
     				{posts.length <= 0 && <p className="no-p-msg"> You currently have no posts.</p>}
-
-    			</MDBContainer>
     		</Fragment>
     	);
 	}
