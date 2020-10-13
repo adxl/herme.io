@@ -86,7 +86,11 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-	location: PropTypes.any,
+	location: PropTypes.shape({ pathname: PropTypes.string.isRequired }),
+};
+
+Home.defaultProps = {
+	location: '/',
 };
 
 export default Home;

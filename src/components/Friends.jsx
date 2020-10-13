@@ -89,6 +89,7 @@ class Friends extends Component {
 						{!friends.length && <h5 className="no-f-r-msg">No friends yet</h5>}
 					</ul>
 					<hr />
+					<br />
 					<h4>People you may know :</h4>
 					<ul>
 

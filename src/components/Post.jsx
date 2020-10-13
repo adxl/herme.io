@@ -64,7 +64,11 @@ class Post extends Component {
 }
 
 Post.propTypes = {
-	data: PropTypes.objectOf(PropTypes.object),
+	data: PropTypes.shape({
+		author: PropTypes.string.isRequired,
+		content: PropTypes.string.isRequired,
+		likes_count: PropTypes.number.isRequired,
+	}),
 };
 
 Post.defaultProps = {

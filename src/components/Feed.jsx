@@ -1,7 +1,4 @@
 import React, { Component, Fragment } from 'react';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFrownOpen } from '@fortawesome/free-regular-svg-icons';
 import Post from './Post';
 
 class Feed extends Component {
