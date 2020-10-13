@@ -69,7 +69,7 @@ class Friends extends Component {
 		return (
 			<Fragment>
 				<Requests />
-				<div>
+				<div className="f-col">
 					<h2>Your friends :</h2>
 					<ul>
 						{friends.length > 0 && friends.map((f) => (

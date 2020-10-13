@@ -104,7 +104,7 @@ p {
   padding-top: 50px;
   width: 85vw;
   float: left;
-  padding: 50px 15% 0 15%;
+  padding: 50px 5% 0 5%;
 }
 
 /*  POSTS  */
@@ -211,8 +211,20 @@ p {
 
 /* FRIENDS */
 
+.r-col {
+  width: 50%;
+  float: left;
+  padding: 0 10px;
+}
+
+.f-col {
+  width: 50%;
+  float: left;
+  padding: 0 10px;
+}
+
 .friend-div {
-  width: 80%;
+  width: 100%;
   overflow: hidden;
   background-color: #fff;
   padding: 10px;
@@ -257,7 +269,7 @@ p {
 /*  REQUESTS  */
 
 .r-div {
-  width: 80%;
+  width: 100%;
   overflow: hidden;
   background-color: #fff;
   padding: 10px;
@@ -299,7 +311,7 @@ p {
 /* FRIEND SEARCH  */
 
 .f-search-div {
-  width: 80%;
+  width: 100%;
 }
 
 .f-search-result {

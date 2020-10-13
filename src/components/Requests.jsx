@@ -167,35 +167,36 @@ class Requests extends Component {
 
 		return (
 			<Fragment>
-				<h2>Your friend requests :</h2>
-				<ul>
-					{requests.length > 0 && requests.map((r) => (
-						<li key={r.usr}>
-							<div className="r-div">
-								<img className="r-pic" src={`https://robohash.org/${r.usr}`} alt="" />
-								<div className="r-info">
-									{/* <p className="r-fullname">{r.first_name} {r.last_name}</p> */}
-									<p className="r-username">@{r.usr}</p>
+				<div className="r-col">
+					<h2>Your friend requests :</h2>
+					<ul>
+						{requests.length > 0 && requests.map((r) => (
+							<li key={r.usr}>
+								<div className="r-div">
+									<img className="r-pic" src={`https://robohash.org/${r.usr}`} alt="" />
+									<div className="r-info">
+										{/* <p className="r-fullname">{r.first_name} {r.last_name}</p> */}
+										<p className="r-username">@{r.usr}</p>
+									</div>
+									<div className="r-actions-div">
+										<MDBBtn color="success" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.acceptInvite}> Accept </MDBBtn>
+										<MDBBtn color="danger" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.denyInvite}> Deny </MDBBtn>
+									</div>
 								</div>
-								<div className="r-actions-div">
-									<MDBBtn color="success" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.acceptInvite}> Accept </MDBBtn>
-									<MDBBtn color="danger" value={r.usr} rounded size="sm" className="mr-auto" onClick={this.denyInvite}> Deny </MDBBtn>
-								</div>
-							</div>
-						</li>
-					))}
-					{!requests.length && <p>No requests</p>}
-				</ul>
-				<hr />
-				<br />
-				<h2> Add friend :</h2>
-				<div>
-					<div className="f-search-div">
-						<input className="form-control mr-sm-2 f-search-input" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.searchFriend} />
-						{/* <input className="form-control mr-sm-2 f-search-input" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.handleInputChange} /> */}
-						{/* <MDBBtn color="default" rounded size="sm" className="mr-auto f-search-btn" onClick={this.searchFriend}> Search </MDBBtn> */}
-					</div>
-					{searchedUserData
+							</li>
+						))}
+						{!requests.length && <p>No requests</p>}
+					</ul>
+					<hr />
+					<br />
+					<h2> Add friend :</h2>
+					<div>
+						<div className="f-search-div">
+							<input className="form-control mr-sm-2 f-search-input" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.searchFriend} />
+							{/* <input className="form-control mr-sm-2 f-search-input" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.handleInputChange} /> */}
+							{/* <MDBBtn color="default" rounded size="sm" className="mr-auto f-search-btn" onClick={this.searchFriend}> Search </MDBBtn> */}
+						</div>
+						{searchedUserData
 						&& (
 							<div className="f-search-result">
 								{!searchedUserData.me
@@ -230,16 +231,17 @@ class Requests extends Component {
 								)}
 							</div>
 						)}
-					{ (userNotFound && searchUsername) && (
-						<div className="f-search-result">
-							<p>Not found</p>
-						</div>
-					) }
-					{ searchedUserData && searchedUserData.me && (
-						<div className="f-search-result">
-							<p>It seems that it&apos;s you :)</p>
-						</div>
-					) }
+						{ (userNotFound && searchUsername) && (
+							<div className="f-search-result">
+								<p>Not found</p>
+							</div>
+						) }
+						{ searchedUserData && searchedUserData.me && (
+							<div className="f-search-result">
+								<p>It seems that it&apos;s you :)</p>
+							</div>
+						) }
+					</div>
 				</div>
 			</Fragment>
 		);
