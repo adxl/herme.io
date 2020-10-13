@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { MDBNav, MDBNavLink, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import { MDBNav, MDBNavLink } from 'mdbreact';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUserFriends, faUser } from '@fortawesome/free-solid-svg-icons';
+
 import Feed from './Feed';
 import Posts from './Posts';
 import Friends from './Friends';
@@ -43,57 +47,63 @@ class Home extends Component {
 				<MDBNav className="justify-content-end top-nav">
 					<MDBNavLink to="#" className="nav-link" onClick={this.logout}>Logout</MDBNavLink>
 				</MDBNav>
-				<MDBContainer fluid>
-					<MDBRow>
-						<MDBCol size="2" className="profile-col">
-							<MDBContainer className="profile-info">
-								<MDBContainer className="profile-pic">
-									{user && <img src={`https://robohash.org/${user.username}`} alt="profile_pic" />}
-								</MDBContainer>
-								<MDBContainer className="profile-name">
-									{user && `${user.first_name} ${user.last_name}`}
-								</MDBContainer>
-							</MDBContainer>
-							<MDBContainer className="profile-menu">
-								<MDBNav className="flex-column profile-nav">
-									<MDBNavLink name="home" to="/home">Home</MDBNavLink>
-									<MDBNavLink name="posts" to="/posts">Posts</MDBNavLink>
-									<MDBNavLink name="friends" to="/friends">Friends</MDBNavLink>
-								</MDBNav>
-							</MDBContainer>
-						</MDBCol>
-						<MDBCol className="feed-col">
-							{page === 'home'
+				<div className="main">
+					<div className="profile-col">
+						<div className="profile-info">
+							<div className="profile-pic">
+								{user && <img src={`https://robohash.org/${user.username}`} alt="profile_pic" />}
+							</div>
+							<div className="profile-name">
+								{user && `${user.first_name} ${user.last_name}`}
+							</div>
+						</div>
+						<div className="profile-menu">
+							<MDBNav className="flex-column profile-nav">
+								<MDBNavLink name="home" to="/home">
+									<FontAwesomeIcon icon={faHome} />
+									<span> Home</span>
+								</MDBNavLink>
+								<MDBNavLink name="posts" to="/posts">
+									<FontAwesomeIcon icon={faUser} />
+									<span> Posts</span>
+								</MDBNavLink>
+								<MDBNavLink name="friends" to="/friends">
+									<FontAwesomeIcon icon={faUserFriends} />
+									<span> Friends</span>
+								</MDBNavLink>
+							</MDBNav>
+						</div>
+					</div>
+					<div className="feed-col">
+						{page === 'home'
 								&& (
-									<MDBCol>
+									<div>
 										<Feed />
-									</MDBCol>
+									</div>
 								)}
-							{page === 'posts'
+						{page === 'posts'
 								&& (
-									<MDBCol>
+									<div>
 										<Posts />
-									</MDBCol>
+									</div>
 								)}
-							{page === 'friends'
+						{page === 'friends'
 								&& (
-									<MDBCol>
-										<MDBRow>
-											<MDBCol><Requests /></MDBCol>
-											<MDBCol><Friends /></MDBCol>
-										</MDBRow>
-									</MDBCol>
+									<div>
+										<div><Requests /></div>
+										<div><Friends /></div>
+									</div>
 								)}
-						</MDBCol>
-					</MDBRow>
-				</MDBContainer>
+					</div>
+				</div>
+
 			</Fragment>
 		);
 	}
 }
 
 Home.propTypes = {
-	location: PropTypes.string.isRequired,
+	location: PropTypes.any,
 };
 
 export default Home;

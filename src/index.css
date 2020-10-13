@@ -48,11 +48,18 @@ p {
   color: white;
 }
 
+.main {
+  width: 100%;
+  overflow: hidden;
+}
+
 .profile-col {
   height: 93vh;
   /* border: dashed 2px blue; */
   background-color: #fff;
   padding: 0;
+  width: 15vw;
+  float: left;
 }
 
 .profile-info {
@@ -75,6 +82,7 @@ p {
 
 .profile-name {
   height: 10%;
+  text-align: center;
   /* border: dashed 2px blue */
 }
 
@@ -86,7 +94,7 @@ p {
 
 .profile-nav>a {
   color: #212529;
-  padding: 0;
+  padding: 0 0 5px 15%;
 }
 
 .feed-col {
@@ -94,6 +102,8 @@ p {
   overflow-y: scroll;
   background-color: #ececec;
   padding-top: 50px;
+  width: 85vw;
+  float: left;
 }
 
 /*  POSTS  */
