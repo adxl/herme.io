@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { MDBBtn } from 'mdbreact';
+import Requests from './Requests';
 
 class Friends extends Component {
 	state = {
@@ -67,43 +68,47 @@ class Friends extends Component {
 		const { newFriends } = this.state;
 		return (
 			<Fragment>
-				<h2>Your friends :</h2>
-				<ul>
-					{friends.length > 0 && friends.map((f) => (
-						<li key={f.username}>
-							<div className="friend-div">
-								<img className="friend-pic" src={`https://robohash.org/${f.username}`} alt="" />
-								<div className="friend-info">
-									<p className="friend-fullname">{f.first_name} {f.last_name}</p>
-									<p className="friend-username">@{f.username}</p>
+				<Requests />
+				<div>
+					<h2>Your friends :</h2>
+					<ul>
+						{friends.length > 0 && friends.map((f) => (
+							<li key={f.username}>
+								<div className="friend-div">
+									<img className="friend-pic" src={`https://robohash.org/${f.username}`} alt="" />
+									<div className="friend-info">
+										<p className="friend-fullname">{f.first_name} {f.last_name}</p>
+										<p className="friend-username">@{f.username}</p>
+									</div>
+									<div className="friend-del-btn-div">
+										<MDBBtn color="danger" value={f.username} rounded size="sm" className="mr-auto" onClick={this.removeFriend}> Unfriend </MDBBtn>
+									</div>
 								</div>
-								<div className="friend-del-btn-div">
-									<MDBBtn color="danger" value={f.username} rounded size="sm" className="mr-auto" onClick={this.removeFriend}> Unfriend </MDBBtn>
+							</li>
+						))}
+						{!friends.length && <p>No Friends</p>}
+					</ul>
+					<hr />
+					<h2>People you may know :</h2>
+					<ul>
+
+						{newFriends.length > 0 && newFriends.map((f) => (
+							<li key={f.username}>
+								<div className="friend-div">
+									<img className="friend-pic" src={`https://robohash.org/${f.username}`} alt="" />
+									<div className="friend-info">
+										<p className="friend-fullname">{f.first_name} {f.last_name}</p>
+										<p className="friend-username">@{f.username}</p>
+									</div>
+									<div className="friend-del-btn-div">
+										<MDBBtn color="danger" value={f.username} rounded size="sm" className="mr-auto" onClick={this.removeFriend}> Unfriend </MDBBtn>
+									</div>
 								</div>
-							</div>
-						</li>
-					))}
-					{!friends.length && <p>No Friends</p>}
-				</ul>
-				<hr />
-				<h2>People you may know :</h2>
-				<ul>
-					{newFriends.length > 0 && newFriends.map((f) => (
-						<li key={f.username}>
-							<div className="friend-div">
-								<img className="friend-pic" src={`https://robohash.org/${f.username}`} alt="" />
-								<div className="friend-info">
-									<p className="friend-fullname">{f.first_name} {f.last_name}</p>
-									<p className="friend-username">@{f.username}</p>
-								</div>
-								<div className="friend-del-btn-div">
-									<MDBBtn color="danger" value={f.username} rounded size="sm" className="mr-auto" onClick={this.removeFriend}> Unfriend </MDBBtn>
-								</div>
-							</div>
-						</li>
-					))}
-					{!newFriends.length && <p>No Friends</p>}
-				</ul>
+							</li>
+						))}
+						{!newFriends.length && <p>No Friends</p>}
+					</ul>
+				</div>
 			</Fragment>
 		);
 	}

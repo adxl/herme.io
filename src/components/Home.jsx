@@ -8,7 +8,6 @@ import { faHome, faUserFriends, faUser } from '@fortawesome/free-solid-svg-icons
 import Feed from './Feed';
 import Posts from './Posts';
 import Friends from './Friends';
-import Requests from './Requests';
 
 class Home extends Component {
 	state = {
@@ -75,25 +74,9 @@ class Home extends Component {
 						</div>
 					</div>
 					<div className="feed-col">
-						{page === 'home'
-								&& (
-									<div>
-										<Feed />
-									</div>
-								)}
-						{page === 'posts'
-								&& (
-									<div>
-										<Posts />
-									</div>
-								)}
-						{page === 'friends'
-								&& (
-									<div>
-										<div><Requests /></div>
-										<div><Friends /></div>
-									</div>
-								)}
+						{page === 'home' && <Feed /> }
+						{page === 'posts' && <Posts /> }
+						{page === 'friends' && <Friends />}
 					</div>
 				</div>
 
