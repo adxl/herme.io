@@ -185,11 +185,11 @@ class Requests extends Component {
 								</div>
 							</li>
 						))}
-						{!requests.length && <p>No requests</p>}
+						{!requests.length && <h5 className="no-f-r-msg">No requests for now</h5>}
 					</ul>
 					<hr />
 					<br />
-					<h2> Add friend :</h2>
+					<h4> Add friend :</h4>
 					<div>
 						<div className="f-search-div">
 							<input className="form-control mr-sm-2 f-search-input" type="text" placeholder="Enter a username" value={searchUsername} onChange={this.searchFriend} />
@@ -233,12 +233,12 @@ class Requests extends Component {
 						)}
 						{ (userNotFound && searchUsername) && (
 							<div className="f-search-result">
-								<p>Not found</p>
+								<h5 className="no-f-r-msg">User not found</h5>
 							</div>
 						) }
 						{ searchedUserData && searchedUserData.me && (
 							<div className="f-search-result">
-								<p>It seems that it&apos;s you :)</p>
+								<h5 className="no-f-r-msg">It seems that it&apos;s you :)</h5>
 							</div>
 						) }
 					</div>

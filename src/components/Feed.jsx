@@ -1,4 +1,7 @@
 import React, { Component, Fragment } from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFrownOpen } from '@fortawesome/free-regular-svg-icons';
 import Post from './Post';
 
 class Feed extends Component {
@@ -35,7 +38,12 @@ class Feed extends Component {
     						</li>
     					))}
     				</ul>
-    				{posts.length <= 0 && <p>No posts</p>}
+    			{posts.length <= 0 && (
+    				<div>
+    					<h2 className="no-p-msg"> Your home page seems to be empty </h2>
+    					<p className="no-p-msg"> Try to add some <a href="/friends">friends</a> to see their posts</p>
+    				</div>
+    			)}
     		</Fragment>
     	);
     }

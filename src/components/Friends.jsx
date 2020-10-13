@@ -86,10 +86,10 @@ class Friends extends Component {
 								</div>
 							</li>
 						))}
-						{!friends.length && <p>No Friends</p>}
+						{!friends.length && <h5 className="no-f-r-msg">No friends yet</h5>}
 					</ul>
 					<hr />
-					<h2>People you may know :</h2>
+					<h4>People you may know :</h4>
 					<ul>
 
 						{newFriends.length > 0 && newFriends.map((f) => (
