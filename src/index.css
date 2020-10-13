@@ -104,6 +104,7 @@ p {
   padding-top: 50px;
   width: 85vw;
   float: left;
+  padding: 50px 15% 0 15%;
 }
 
 /*  POSTS  */
@@ -138,7 +139,6 @@ p {
   border-bottom: solid 1px #afaeae;
   border-left: solid 1px #c3c3c3;
   border-right: solid 1px #c3c3c3;
-  width: 75%;
 }
 
 .post-header {

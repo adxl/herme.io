@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { MDBContainer } from 'mdbreact';
 import Post from './Post';
 
 class Feed extends Component {
@@ -29,7 +28,6 @@ class Feed extends Component {
 
     	return (
     		<Fragment>
-    			<MDBContainer fluid>
     				<ul>
     				{posts && posts.map((p) => (
     						<li key={p.id_post}>
@@ -38,7 +36,6 @@ class Feed extends Component {
     					))}
     				</ul>
     				{posts.length <= 0 && <p>No posts</p>}
-    			</MDBContainer>
     		</Fragment>
     	);
     }
