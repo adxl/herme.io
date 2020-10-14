@@ -73,13 +73,14 @@ p {
 .profile-pic {
   /* height: 90%; */
   /* border: dashed 2px blue; */
-  padding: 0;
+  padding: 15px;
 }
 
 .profile-pic>img {
   width: 100%;
-  padding: 10px;
-  border-radius: 100%;
+  /* margin: 10px; */
+  border: solid 1px #343a40;
+  border-radius: 50%;
 }
 
 .profile-name {
@@ -103,56 +104,71 @@ p {
   height: 93vh;
   overflow-y: scroll;
   background-color: #ececec;
-  padding-top: 50px;
   width: 85vw;
   float: left;
-  padding: 50px 2% 0 2%;
+  padding: 0 2% 0 2%;
 }
 
 .feed-p-col {
   width: 60vw;
   float: left;
+  padding-top: 10vh;
 }
 
 .feed-f-col {
   width: 20vw;
-  margin-top: -50px;
-  height: 93vh;
+  height: 73vh;
+  /* max-height: 93vh; */
+  overflow-y: scroll;
   /* padding: 0 20px; */
   position: fixed;
-  right: 0;
-  overflow: hidden;
-  /* border: dashed 1px red; */
+  right: 20px;
+  /* border: dashed 2px red; */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: solid 1px #afaeae;
+  border-left: solid 1px #c3c3c3;
+  border-right: solid 1px #c3c3c3;
+  background-color: white;
+  margin-top: 20vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.feed-f-col::-webkit-scrollbar {
+  display: none;
 }
 
 /*  CHAT BAR  */
 
 .c-col {
   /* width: 100%; */
-  /* border: dashed 1px goldenrod; */
-  overflow-y: scroll;
   position: absolute;
   bottom: 0;
+  height: 100%;
+  padding: 10px;
 }
 
 .c-friend-div {
   width: 100%;
-  background-color: white;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .c-friend-pic {
   width: 20%;
   float: left;
+  border: solid 1px #343a40;
+  border-radius: 50%;
 }
 
 .c-friend-name {
-  width: 80%;
+  width: 70%;
   float: left;
+  padding-left: 10px;
 }
 
 /*  POSTS  */
@@ -206,6 +222,7 @@ p {
 .author-pic {
   float: left;
   width: 10%;
+  border: solid 1px #343a40;
   border-radius: 50%;
 }
 
@@ -294,7 +311,7 @@ p {
 .friend-pic {
   width: 20%;
   float: left;
-  border: solid 1px #ececec;
+  border: solid 1px #343a40;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -339,7 +356,7 @@ p {
 .r-pic {
   width: 20%;
   float: left;
-  border: solid 1px #ececec;
+  border: solid 1px #343a40;
   border-radius: 50%;
   margin-right: 10px;
 }

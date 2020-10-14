@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { MDBBtn } from 'mdbreact';
+import { array } from 'prop-types';
 import Requests from './Requests';
 
 class Friends extends Component {

@@ -18,6 +18,16 @@ class ChatBar extends Component {
 		})
 			.then((response) => response.json())
 			.then((data) => {
+				const arr = data;
+				for (let i = 0; i < 12; i++) {
+					const u = {
+						username: i,
+						first_name: 'Bot',
+						last_name: 'Kabot',
+					};
+					arr.push(u);
+				}
+				this.setState({ friends: arr });
 				this.setState({ friends: data });
 			})
 			.catch((error) => { throw error; });
