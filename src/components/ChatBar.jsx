@@ -18,16 +18,15 @@ class ChatBar extends Component {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				const arr = data;
-				for (let i = 0; i < 12; i++) {
-					const u = {
-						username: i,
-						first_name: 'Bot',
-						last_name: 'Kabot',
-					};
-					arr.push(u);
-				}
-				this.setState({ friends: arr });
+				// const arr = data;
+				// for (let i = 0; i < 12; i++) {
+				// 	const u = {
+				// 		username: i,
+				// 		first_name: 'Bot',
+				// 		last_name: 'Kabot',
+				// 	};
+				// 	arr.push(u);
+				// }
 				this.setState({ friends: data });
 			})
 			.catch((error) => { throw error; });
@@ -48,7 +47,11 @@ class ChatBar extends Component {
 								</div>
 							</li>
 						))}
-						{!friends.length && <h5 className="no-f-r-msg">No friends yet</h5>}
+						{!friends.length && (
+							<div>
+								<p className="no-f-r-msg">No friends yet, click <a href="/friends"> here </a> to add some.</p>
+							</div>
+						)}
 					</ul>
 				</div>
 			</Fragment>

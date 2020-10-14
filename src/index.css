@@ -113,6 +113,7 @@ p {
   width: 60vw;
   float: left;
   padding-top: 10vh;
+  padding: 10vh 5vw;
 }
 
 .feed-f-col {
@@ -147,6 +148,7 @@ p {
   bottom: 0;
   height: 100%;
   padding: 10px;
+  width: 100%;
 }
 
 .c-friend-div {
