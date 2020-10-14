@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Post from './Post';
+import ChatBar from './ChatBar';
 
 class Feed extends Component {
     state = {
@@ -28,6 +29,7 @@ class Feed extends Component {
 
     	return (
     		<Fragment>
+    			<div className="feed-p-col">
     				<ul>
     				{posts && posts.map((p) => (
     						<li key={p.id_post}>
@@ -41,6 +43,10 @@ class Feed extends Component {
     					<p className="no-p-msg"> Try to add some <a href="/friends">friends</a> to see their posts</p>
     				</div>
     			)}
+    			</div>
+    			<div className="feed-f-col">
+    				<ChatBar />
+    			</div>
     		</Fragment>
     	);
     }

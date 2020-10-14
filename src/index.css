@@ -12,10 +12,12 @@ code {
 ul {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 li {
   list-style: none;
+  overflow: hidden;
 }
 
 p {
@@ -104,7 +106,53 @@ p {
   padding-top: 50px;
   width: 85vw;
   float: left;
-  padding: 50px 5% 0 5%;
+  padding: 50px 2% 0 2%;
+}
+
+.feed-p-col {
+  width: 60vw;
+  float: left;
+}
+
+.feed-f-col {
+  width: 20vw;
+  margin-top: -50px;
+  height: 93vh;
+  /* padding: 0 20px; */
+  position: fixed;
+  right: 0;
+  overflow: hidden;
+  /* border: dashed 1px red; */
+}
+
+/*  CHAT BAR  */
+
+.c-col {
+  /* width: 100%; */
+  /* border: dashed 1px goldenrod; */
+  overflow-y: scroll;
+  position: absolute;
+  bottom: 0;
+}
+
+.c-friend-div {
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.c-friend-pic {
+  width: 20%;
+  float: left;
+}
+
+.c-friend-name {
+  width: 80%;
+  float: left;
 }
 
 /*  POSTS  */

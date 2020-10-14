@@ -38,7 +38,7 @@ class Home extends Component {
 
 	render() {
 		const { location } = this.props;
-		const page = location.pathname.substr(1);
+		const page = location.pathname.substr(1) || 'home';
 		const { user } = this.state;
 
 		return (
