@@ -109,7 +109,7 @@ p {
   padding: 0 2% 0 2%;
 }
 
-.feed-p-col {
+.feed-p-col, .posts-p-col {
   width: 60vw;
   float: left;
   padding-top: 10vh;
