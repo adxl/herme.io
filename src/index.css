@@ -287,13 +287,13 @@ p {
 .r-col {
   width: 50%;
   float: left;
-  padding: 0 10px;
+  padding: 10vh 10px 0 10px;
 }
 
 .f-col {
   width: 50%;
   float: left;
-  padding: 0 10px;
+  padding: 10vh 10px 0 10px;
 }
 
 .friend-div {
