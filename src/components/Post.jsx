@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { MDBBtn } from 'mdbreact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/free-regular-svg-icons';
+import { faThumbsUp, faComments } from '@fortawesome/free-regular-svg-icons';
 
 class Post extends Component {
 	state = {
@@ -52,8 +52,8 @@ class Post extends Component {
 							</MDBBtn>
 						</div>
 						<div className="comment-div">
-							<MDBBtn color="grey">
-								<FontAwesomeIcon icon={faThumbsDown} /> (0)
+							<MDBBtn color="grey" disabled>
+								<FontAwesomeIcon icon={faComments} /> (0)
 							</MDBBtn>
 						</div>
 					</div>
