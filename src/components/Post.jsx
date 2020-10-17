@@ -63,7 +63,7 @@ class Post extends Component {
 						<img className="author-pic" src={`https://robohash.org/${data.author}`} alt="" />
 						<div className="author-name">
 							<p>{userData && userData.userData.first_name} {userData && userData.userData.last_name}</p>
-							<p>@{data.author} - {data.post_date}</p>
+							<p>@{data.author} - {data.date}</p>
 
 						</div>
 					</div>
