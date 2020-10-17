@@ -41,6 +41,10 @@ class Home extends Component {
 		const page = location.pathname.substr(1) || 'home';
 		const { user } = this.state;
 
+		const firstNameInitial = user && (user.first_name.charAt(0) || 'X');
+		const lastNameInitial = user && (user.last_name.charAt(0) || 'Y');
+		// const lastNameInitial = user.last_name.charAt(0) || 'Y';
+
 		return (
 			<Fragment>
 				<MDBNav className="justify-content-end top-nav">
@@ -50,7 +54,7 @@ class Home extends Component {
 					<div className="profile-col">
 						<div className="profile-info">
 							<div className="profile-pic">
-								{user && <img src={`https://robohash.org/${user.username}`} alt="profile_pic" />}
+								{user && <img src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${firstNameInitial}+${lastNameInitial}`} alt="profile_pic" />}
 							</div>
 							<div className="profile-name">
 								{user && `${user.first_name} ${user.last_name}`}

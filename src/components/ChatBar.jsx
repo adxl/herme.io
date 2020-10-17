@@ -34,6 +34,7 @@ class ChatBar extends Component {
 
 	render() {
 		const { friends } = this.state;
+
 		return (
 			<Fragment>
 				<div className="c-col">
@@ -42,7 +43,7 @@ class ChatBar extends Component {
 						{friends.length > 0 && friends.map((f) => (
 							<li key={f.username}>
 								<div className="c-friend-div">
-									<img className="c-friend-pic" src={`https://robohash.org/${f.username}`} alt="" />
+									<img className="c-friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${f.first_name}+${f.last_name}`} alt="" />
 									<p className="c-friend-name">{f.first_name} {f.last_name}</p>
 								</div>
 							</li>

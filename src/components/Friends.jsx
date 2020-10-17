@@ -76,7 +76,7 @@ class Friends extends Component {
 						{friends.length > 0 && friends.map((f) => (
 							<li key={f.username}>
 								<div className="friend-div">
-									<img className="friend-pic" src={`https://robohash.org/${f.username}`} alt="" />
+									<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${f.first_name}+${f.last_name}`} alt="" />
 									<div className="friend-info">
 										<p className="friend-fullname">{f.first_name} {f.last_name}</p>
 										<p className="friend-username">@{f.username}</p>
@@ -96,7 +96,7 @@ class Friends extends Component {
 						{newFriends.length > 0 && newFriends.map((f) => (
 							<li key={f.username}>
 								<div className="friend-div">
-									<img className="friend-pic" src={`https://robohash.org/${f.username}`} alt="" />
+									<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${f.first_name}+${f.last_name}`} alt="" />
 									<div className="friend-info">
 										<p className="friend-fullname">{f.first_name} {f.last_name}</p>
 										<p className="friend-username">@{f.username}</p>
