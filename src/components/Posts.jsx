@@ -6,14 +6,20 @@ import Post from './Post';
 import ChatBar from './ChatBar';
 
 class Posts extends Component {
-    state = {
-    	posts: [],
-    	newPostContent: '',
-    }
+	constructor() {
+		super();
 
-    componentDidMount() {
+		this.state = {
+			posts: [],
+			newPostContent: '',
+		};
+
+		this.fetchPosts = this.fetchPosts.bind(this);
+	}
+
+	componentDidMount() {
     	this.fetchPosts();
-    }
+	}
 
 	handleInputChange = (e) => {
 		const { value } = e.target;
@@ -84,7 +90,6 @@ class Posts extends Component {
 	render() {
 		const { posts } = this.state;
 		const { newPostContent } = this.state;
-		const test = 'test here';
 
     	return (
     		<Fragment>
