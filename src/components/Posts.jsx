@@ -84,6 +84,7 @@ class Posts extends Component {
 	render() {
 		const { posts } = this.state;
 		const { newPostContent } = this.state;
+		const test = 'test here';
 
     	return (
     		<Fragment>
@@ -95,7 +96,7 @@ class Posts extends Component {
 					<ul>
     				{posts && posts.map((p) => (
 							<li key={p.id_post} className="post-li">
-								<Post data={p} />
+								<Post data={p} fetchPosts={this.fetchPosts} />
 								<MDBBtn id={p.id_post} color="danger" onClick={this.deletePost} className="del-post-btn">
 									<FontAwesomeIcon id={p.id_post} icon={faTimes} />
 								</MDBBtn>

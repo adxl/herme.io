@@ -13,6 +13,32 @@ class Post extends Component {
 		this.fetchAuthorData();
 	}
 
+	likePost = (e) => {
+		const { value } = e.target;
+		const { fetchPosts } = this.props;
+
+		const data = {
+			postId: value,
+		};
+
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('token'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch('https://herme-io.herokuapp.com/posts/like', options)
+			.then((response) => {
+				if (response.ok) {
+					fetchPosts();
+				}
+			})
+			.catch((error) => { throw error; });
+	}
+
 	async fetchAuthorData() {
 		const { data } = this.props;
 		await fetch(`https://herme-io.herokuapp.com/users/${data.author}`, {
@@ -47,7 +73,7 @@ class Post extends Component {
 					<hr />
 					<div className="react-div">
 						<div className="like-div">
-							<MDBBtn color="primary">
+							<MDBBtn color="primary" value={data.id_post} onClick={this.likePost}>
 								<FontAwesomeIcon icon={faThumbsUp} /> ({data.likes_count})
 							</MDBBtn>
 						</div>

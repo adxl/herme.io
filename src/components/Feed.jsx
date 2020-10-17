@@ -3,15 +3,25 @@ import Post from './Post';
 import ChatBar from './ChatBar';
 
 class Feed extends Component {
-    state = {
-    	posts: [],
-    }
+	// state = {
+	// 	posts: [],
+	// }
 
-    componentDidMount() {
+	constructor() {
+		super();
+
+		this.state = {
+    		posts: [],
+		};
+
+		this.fetchPosts = this.fetchPosts.bind(this);
+	}
+
+	componentDidMount() {
     	this.fetchPosts();
-    }
+	}
 
-    async fetchPosts() {
+	async fetchPosts() {
     	await fetch('https://herme-io.herokuapp.com/posts/friends', {
     		headers: {
     			Authorization: localStorage.getItem('token'),
@@ -19,12 +29,13 @@ class Feed extends Component {
     	})
     		.then((response) => response.json())
     		.then((data) => {
+    			console.log(data);
     			this.setState({ posts: data.reverse() });
     		})
     		.catch((error) => { throw error; });
-    }
+	}
 
-    render() {
+	render() {
     	const { posts } = this.state;
 
     	return (
@@ -33,7 +44,7 @@ class Feed extends Component {
     				<ul>
     				{posts && posts.map((p) => (
     						<li key={p.id_post}>
-    							<Post data={p} />
+    							<Post data={p} fetchPosts={this.fetchPosts} />
     						</li>
     					))}
     				</ul>
@@ -49,7 +60,7 @@ class Feed extends Component {
     			</div>
     		</Fragment>
     	);
-    }
+	}
 }
 
 export default Feed;
