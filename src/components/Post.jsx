@@ -14,7 +14,8 @@ class Post extends Component {
 	}
 
 	likePost = (e) => {
-		const { value } = e.target;
+		let value = e.target.value || e.target.parentElement.value;
+		value = value || e.target.parentElement.parentElement.value;
 		const { fetchPosts } = this.props;
 
 		const data = {
@@ -84,7 +85,7 @@ class Post extends Component {
 					<div className="react-div">
 						<div className="like-div">
 							<MDBBtn color="primary" value={data.id_post} onClick={this.likePost}>
-								<FontAwesomeIcon icon={faThumbsUp} /> ({data.likes_count})
+								<FontAwesomeIcon value={data.id_post} icon={faThumbsUp} /> ({data.likes_count})
 							</MDBBtn>
 						</div>
 						<div className="comment-div">
