@@ -105,7 +105,10 @@ Post.propTypes = {
 		author: PropTypes.string.isRequired,
 		content: PropTypes.string.isRequired,
 		likes_count: PropTypes.number.isRequired,
+		date: PropTypes.string.isRequired,
+		id_post: PropTypes.string.isRequired,
 	}),
+	fetchPosts: PropTypes.func.isRequired,
 };
 
 Post.defaultProps = {
