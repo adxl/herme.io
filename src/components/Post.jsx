@@ -39,6 +39,15 @@ class Post extends Component {
 			.catch((error) => { throw error; });
 	}
 
+	hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+		  hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	}
+
 	async fetchAuthorData() {
 		const { data } = this.props;
 		await fetch(`https://herme-io.herokuapp.com/users/${data.author}`, {
@@ -60,7 +69,7 @@ class Post extends Component {
 			<Fragment>
 				<div className="post-div">
 					<div className="post-header">
-						{ userData && <img className="author-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${userData.userData.first_name}+${userData.userData.last_name}`} alt="" />}
+						{ userData && <img className="author-pic" src={`https://eu.ui-avatars.com/api/?size=500&color=fff&background=${this.hashColor(data.author)}&name=${userData.userData.first_name}+${userData.userData.last_name}`} alt="" />}
 						<div className="author-name">
 							<p>{userData && userData.userData.first_name} {userData && userData.userData.last_name}</p>
 							<p>@{data.author} - {data.date}</p>

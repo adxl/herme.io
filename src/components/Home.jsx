@@ -23,6 +23,15 @@ class Home extends Component {
 		window.location.replace('/login');
 	}
 
+	hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+		  hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	}
+
 	async fetchUser() {
 		await fetch('https://herme-io.herokuapp.com/dash/', {
 			headers: {
@@ -54,7 +63,7 @@ class Home extends Component {
 					<div className="profile-col">
 						<div className="profile-info">
 							<div className="profile-pic">
-								{user && <img src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${firstNameInitial}+${lastNameInitial}`} alt="profile_pic" />}
+								{user && <img src={`https://eu.ui-avatars.com/api/?size=500&color=fff&background=${this.hashColor(user.username)}&name=${firstNameInitial}+${lastNameInitial}`} alt="profile_pic" />}
 							</div>
 							<div className="profile-name">
 								{user && `${user.first_name} ${user.last_name}`}

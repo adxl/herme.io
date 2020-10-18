@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { MDBBtn } from 'mdbreact';
 
 class ChatBar extends Component {
 	state = {
@@ -8,6 +7,15 @@ class ChatBar extends Component {
 
 	componentDidMount() {
 		this.fetchFriends();
+	}
+
+	hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+		  hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
 	}
 
 	async fetchFriends() {
@@ -32,32 +40,32 @@ class ChatBar extends Component {
 			.catch((error) => { throw error; });
 	}
 
-	render() {
-		const { friends } = this.state;
+	 render() {
+	 	const { friends } = this.state;
 
-		return (
-			<Fragment>
-				<div className="c-col">
-					<h5>Friends :</h5>
-					<ul>
-						{friends.length > 0 && friends.map((f) => (
-							<li key={f.username}>
-								<div className="c-friend-div">
-									<img className="c-friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${f.first_name}+${f.last_name}`} alt="" />
-									<p className="c-friend-name">{f.first_name} {f.last_name}</p>
-								</div>
-							</li>
-						))}
-						{!friends.length && (
-							<div>
-								<p className="no-f-r-msg">No friends yet, click <a href="/friends"> here </a> to add some.</p>
-							</div>
-						)}
-					</ul>
-				</div>
-			</Fragment>
-		);
-	}
+	 	return (
+	 		<Fragment>
+	 			<div className="c-col">
+	 				<h5>Friends :</h5>
+	 				<ul>
+	 					{friends.length > 0 && friends.map((f) => (
+	 						<li key={f.username}>
+	 							<div className="c-friend-div">
+	 								<img className="c-friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&color=fff&background=${this.hashColor(f.username)}&name=${f.first_name}+${f.last_name}`} alt="" />
+	 								<p className="c-friend-name">{f.first_name} {f.last_name}</p>
+	 							</div>
+	 						</li>
+	 					))}
+	 					{!friends.length && (
+	 						<div>
+	 							<p className="no-f-r-msg">No friends yet, click <a href="/friends"> here </a> to add some.</p>
+	 						</div>
+	 					)}
+	 				</ul>
+	 			</div>
+	 		</Fragment>
+	 	);
+	 }
 }
 
 export default ChatBar;

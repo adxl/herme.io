@@ -146,6 +146,15 @@ class Requests extends Component {
 			});
 	}
 
+	hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+		  hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	}
+
 	async fetchRequests() {
 		await fetch('https://herme-io.herokuapp.com/requests', {
 			headers: {
@@ -173,7 +182,7 @@ class Requests extends Component {
 						{requests.length > 0 && requests.map((r) => (
 							<li key={r.usr}>
 								<div className="r-div">
-									<img className="r-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${r.usr}`} alt="" />
+									<img className="r-pic" src={`https://eu.ui-avatars.com/api/?size=500&color=fff&background=${this.hashColor(r.usr)}&name=${r.usr}`} alt="" />
 									<div className="r-info">
 										{/* <p className="r-fullname">{r.first_name} {r.last_name}</p> */}
 										<p className="r-username">@{r.usr}</p>
@@ -202,7 +211,7 @@ class Requests extends Component {
 								{!searchedUserData.me
 								&& (
 									<div className="friend-div">
-										<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${searchedUserData.userData.first_name}+${searchedUserData.userData.last_name}`} alt="" />
+										<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&color=fff&background=${this.hashColor(searchedUserData.userData.username)}&name=${searchedUserData.userData.first_name}+${searchedUserData.userData.last_name}`} alt="" />
 										<div className="friend-info">
 											<p className="friend-fullname">{searchedUserData.userData.first_name} {searchedUserData.userData.last_name}</p>
 											<p className="friend-username">@{searchedUserData.userData.username}</p>

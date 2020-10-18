@@ -38,6 +38,15 @@ class Friends extends Component {
 			.catch((error) => { throw error; });
 	}
 
+	hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+		  hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	}
+
 	async fetchFriends() {
 		await fetch('https://herme-io.herokuapp.com/friends', {
 			headers: {
@@ -76,7 +85,7 @@ class Friends extends Component {
 						{friends.length > 0 && friends.map((f) => (
 							<li key={f.username}>
 								<div className="friend-div">
-									<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${f.first_name}+${f.last_name}`} alt="" />
+									<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&color=fff&background=${this.hashColor(f.username)}&name=${f.first_name}+${f.last_name}`} alt="" />
 									<div className="friend-info">
 										<p className="friend-fullname">{f.first_name} {f.last_name}</p>
 										<p className="friend-username">@{f.username}</p>
@@ -96,7 +105,7 @@ class Friends extends Component {
 						{newFriends.length > 0 && newFriends.map((f) => (
 							<li key={f.username}>
 								<div className="friend-div">
-									<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&background=random&name=${f.first_name}+${f.last_name}`} alt="" />
+									<img className="friend-pic" src={`https://eu.ui-avatars.com/api/?size=500&color=fff&background=${this.hashColor(f.username)}&name=${f.first_name}+${f.last_name}`} alt="" />
 									<div className="friend-info">
 										<p className="friend-fullname">{f.first_name} {f.last_name}</p>
 										<p className="friend-username">@{f.username}</p>
