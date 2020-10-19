@@ -16,7 +16,20 @@ What you can do in Herme.io:
 
 ## Screenshots
 
+- ### Feed
+<p align="center">
+    <img width="80%" style="margin-bottom:10" src="./public/feed.png" alt="gem-logo">
+</p>
 
+- ### Posts
+<p align="center">
+    <img width="80%" style="margin-bottom:10" src="./public/posts.png" alt="gem-logo">
+</p>
+
+- ### Friends
+<p align="center">
+    <img width="80%" style="margin-bottom:5" src="./public/friends.png" alt="gem-logo">
+</p>
 
 
 ## License
