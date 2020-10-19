@@ -41,6 +41,10 @@ p {
   margin-right: 4%;
 }
 
+.bad-login-msg {
+  color: red
+}
+
 .top-nav {
   background-color: #343a40;
   height: 7vh;
