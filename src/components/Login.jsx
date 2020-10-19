@@ -58,7 +58,7 @@ class Login extends Component {
     						<form onSubmit={this.handleSubmit}>
     							<p className="h3 text-center mb-3">Herme.io</p>
 	 							<p className="h4 text-center mb-4">Sign in</p>
-	 							{errorMessage && <p className="mb-3 bad-login-msg">{errorMessage}</p> }
+	 							{errorMessage && <p className="mb-3 bad-login-register-msg">{errorMessage}</p> }
     							<input name="username" type="text" placeholder="Username" required id="defaultFormLoginEmailEx" className="form-control" onChange={this.handleInputChange} />
     							<br />
     							<input name="password" type="password" placeholder="Password" required id="defaultFormLoginPasswordEx" className="form-control" onChange={this.handleInputChange} />

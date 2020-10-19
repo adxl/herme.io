@@ -9,6 +9,7 @@ class Register extends Component {
 		email: '',
 		username: '',
 		password: '',
+		errorMessage: '',
 	}
 
 	handleInputChange = (e) => {
@@ -37,7 +38,7 @@ class Register extends Component {
 		}
 	}
 
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const options = {
@@ -46,14 +47,20 @@ class Register extends Component {
 			body: JSON.stringify(this.state),
 		};
 
-		fetch('https://herme-io.herokuapp.com/register/', options)
+		await fetch('https://herme-io.herokuapp.com/register/', options)
 			.then((data) => {
-				if (data.ok) { window.location.replace('/login'); }
+				if (data.ok) {
+					window.location.replace('/login');
+				} else {
+					this.setState({ errorMessage: 'The username and/or email have already been used' });
+				}
 			})
 			.catch((error) => { throw error; });
 	}
 
 	render() {
+		const { errorMessage } = this.state;
+
 		return (
 			<Fragment>
 				<MDBContainer>
@@ -61,21 +68,22 @@ class Register extends Component {
 						<MDBCol md="6" className="form-main">
 							<form onSubmit={this.handleSubmit}>
 								<p className="h4 text-center mb-5">Welcome to Herme.io</p>
+								{errorMessage && <p className="mb-3 bad-login-register-msg">{errorMessage}</p> }
 								<div>
 									<div className="field">
-										<input name="firstName" type="text" placeholder="First Name" id="defaultFormRegisterFNameEx" className="form-control" onChange={this.handleInputChange} />
+										<input name="firstName" required minLength="2" type="text" placeholder="First Name" id="defaultFormRegisterFNameEx" className="form-control" onChange={this.handleInputChange} />
 									</div>
 									<div className="field">
-										<input name="lastName" type="text" placeholder="Last Name" id="defaultFormRegisterLNameEx" className="form-control" onChange={this.handleInputChange} />
+										<input name="lastName" required minLength="2" type="text" placeholder="Last Name" id="defaultFormRegisterLNameEx" className="form-control" onChange={this.handleInputChange} />
 										<br />
 									</div>
 								</div>
 
-								<input name="email" type="email" placeholder="Email" id="defaultFormRegisterEmailEx" className="form-control" onChange={this.handleInputChange} />
+								<input name="email" type="email" required placeholder="Email" id="defaultFormRegisterEmailEx" className="form-control" onChange={this.handleInputChange} />
 								<br />
-								<input name="username" type="text" placeholder="Username" id="defaultFormRegisterUsernameEx" className="form-control" onChange={this.handleInputChange} />
+								<input name="username" required minLength="4" type="text" placeholder="Username" id="defaultFormRegisterUsernameEx" className="form-control" onChange={this.handleInputChange} />
 								<br />
-								<input name="password" type="password" placeholder="Password" id="defaultFormRegisterPasswordEx" className="form-control" onChange={this.handleInputChange} />
+								<input name="password" required minLength="6" type="password" placeholder="Password" id="defaultFormRegisterPasswordEx" className="form-control" onChange={this.handleInputChange} />
     						<br />
 
 								<div className="text-center mt-4">
