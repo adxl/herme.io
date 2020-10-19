@@ -10,14 +10,14 @@ function App() {
 			<BrowserRouter>
 				{/* token: true */}
 				<Switch>
-					{localStorage.getItem('token') && <Route path="/*" component={Home} />}
+					{localStorage.getItem('token') && <Route path="/herme.io/*" component={Home} />}
 				</Switch>
 
 				{/* token: false */}
 				<Switch>
-					{ !localStorage.getItem('token') && <Route exact path="/login" component={Login} />}
-					{ !localStorage.getItem('token') && <Route exact path="/register" component={Register} />}
-					{ !localStorage.getItem('token') && <Route path="/*" component={Login} /> }
+					{ !localStorage.getItem('token') && <Route exact path="/herme.io/login" component={Login} />}
+					{ !localStorage.getItem('token') && <Route exact path="/herme.io/register" component={Register} />}
+					{ !localStorage.getItem('token') && <Route path="/herme.io/*" component={Login} /> }
 				</Switch>
 			</BrowserRouter>
 		</Fragment>
