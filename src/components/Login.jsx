@@ -39,7 +39,7 @@ class Login extends Component {
 	 				const { token } = data;
 	 				if (token) {
 	 					localStorage.setItem('token', token);
-	 					window.location.replace('/home');
+	 					window.location.replace('https://adxl.github.io/herme.io/home');
 	 				}
 	 			} else {
 	 				this.setState({ errorMessage: 'Wrong username and/or password' });

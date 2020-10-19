@@ -20,7 +20,7 @@ class Home extends Component {
 
 	logout = () => {
 		localStorage.removeItem('token');
-		window.location.replace('/login');
+		window.location.replace('https://adxl.github.io/herme.io/login');
 	}
 
 	hashColor = (str) => {
@@ -71,15 +71,15 @@ class Home extends Component {
 						</div>
 						<div className="profile-menu">
 							<MDBNav className="flex-column profile-nav">
-								<MDBNavLink name="home" to="/home">
+								<MDBNavLink name="home" to="https://adxl.github.io/herme.io/home">
 									<FontAwesomeIcon icon={faHome} />
 									<span> Home</span>
 								</MDBNavLink>
-								<MDBNavLink name="posts" to="/posts">
+								<MDBNavLink name="posts" to="https://adxl.github.io/herme.io/posts">
 									<FontAwesomeIcon icon={faUser} />
 									<span> Posts</span>
 								</MDBNavLink>
-								<MDBNavLink name="friends" to="/friends">
+								<MDBNavLink name="friends" to="https://adxl.github.io/herme.io/friends">
 									<FontAwesomeIcon icon={faUserFriends} />
 									<span> Friends</span>
 								</MDBNavLink>

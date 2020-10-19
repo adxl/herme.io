@@ -50,7 +50,7 @@ class Register extends Component {
 		await fetch('https://herme-io.herokuapp.com/register/', options)
 			.then((data) => {
 				if (data.ok) {
-					window.location.replace('/login');
+					window.location.replace('https://adxl.github.io/herme.io/login');
 				} else {
 					this.setState({ errorMessage: 'The username and/or email have already been used' });
 				}
