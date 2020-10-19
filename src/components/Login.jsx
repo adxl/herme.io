@@ -39,7 +39,7 @@ class Login extends Component {
 	 				const { token } = data;
 	 				if (token) {
 	 					localStorage.setItem('token', token);
-	 					window.location.replace('https://adxl.github.io/herme.io/home');
+	 					window.location.replace(`${process.env.PUBLIC_URL}/home`);
 	 				}
 	 			} else {
 	 				this.setState({ errorMessage: 'Wrong username and/or password' });
@@ -66,7 +66,7 @@ class Login extends Component {
     								<MDBBtn color="indigo" type="submit">Login</MDBBtn>
     								<p className="mt-3">
                       Not a member?
-    									<Link to="/register"> Register</Link>
+    									<Link to={`${process.env.PUBLIC_URL}/register`}> Register</Link>
     								</p>
     							</div>
     						</form>

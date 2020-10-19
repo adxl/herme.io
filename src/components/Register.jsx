@@ -50,7 +50,7 @@ class Register extends Component {
 		await fetch('https://herme-io.herokuapp.com/register/', options)
 			.then((data) => {
 				if (data.ok) {
-					window.location.replace('https://adxl.github.io/herme.io/login');
+					window.location.replace(`${process.env.PUBLIC_URL}/login`);
 				} else {
 					this.setState({ errorMessage: 'The username and/or email have already been used' });
 				}
@@ -90,7 +90,7 @@ class Register extends Component {
 									<MDBBtn color="unique" type="submit">Register</MDBBtn>
 									<p className="mt-3">
 											Have an account?
-										<Link to="/login"> Login</Link>
+										<Link to={`${process.env.PUBLIC_URL}/login`}> Login</Link>
 									</p>
 								</div>
 							</form>
