@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import { HashRouter } from 'react-router-dom';
 import Register from './Register';
 import Login from './Login';
 import Home from './Home';
-import Error404 from './Error404';
+// import Error404 from './Error404';
 
 function App() {
-	console.log(window.location.href);
 	console.log(`${process.env.PUBLIC_URL}`);
+	console.log(window.location);
 	return (
 		<Fragment>
 			<BrowserRouter basename={process.env.PUBLIC_URL}>

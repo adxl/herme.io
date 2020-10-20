@@ -47,9 +47,11 @@ class Home extends Component {
 	}
 
 	render() {
-		const { location } = this.props;
-		const page = location.pathname.substr(10) || 'home';
+		const { pathname } = window.location;
+		const page = pathname.substr(10) || 'home';
 		const { user } = this.state;
+
+		console.log(page);
 
 		const firstNameInitial = user && (user.first_name.charAt(0) || 'X');
 		const lastNameInitial = user && (user.last_name.charAt(0) || 'Y');
