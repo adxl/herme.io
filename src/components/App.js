@@ -7,7 +7,7 @@ import Error404 from './Error404';
 
 function App() {
 	console.log(window.location.href);
-	console.log(`/${process.env.PUBLIC_URL}/home`);
+	console.log(`${process.env.PUBLIC_URL}`);
 	return (
 		<Fragment>
 			<BrowserRouter>
@@ -25,7 +25,7 @@ function App() {
 					{ !localStorage.getItem('token') && <Route exact path={`${process.env.PUBLIC_URL}/register`} component={Register} />}
 					{/* { !localStorage.getItem('token') && <Route path="/*" component={Login} /> } */}
 					{/* { !localStorage.getItem('token') && <p>heu</p> } */}
-					{ !localStorage.getItem('token') && <Route component={Error404} /> }
+					{ !localStorage.getItem('token') && <Route path="/*" component={Error404} /> }
 
 				</Switch>
 			</BrowserRouter>
