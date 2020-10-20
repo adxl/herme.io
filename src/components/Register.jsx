@@ -90,7 +90,7 @@ class Register extends Component {
 									<MDBBtn color="unique" type="submit">Register</MDBBtn>
 									<p className="mt-3">
 											Have an account?
-										<Link to={`${process.env.PUBLIC_URL}/login`}> Login</Link>
+										<Link to="/login"> Login</Link>
 									</p>
 								</div>
 							</form>

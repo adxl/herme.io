@@ -10,22 +10,19 @@ function App() {
 	console.log(`${process.env.PUBLIC_URL}`);
 	return (
 		<Fragment>
-			<BrowserRouter>
+			<BrowserRouter basename={process.env.PUBLIC_URL}>
 				{/* token: true */}
 				<Switch>
-					{localStorage.getItem('token') && <Route exact path={`${process.env.PUBLIC_URL}/home`} component={Home} />}
-					{localStorage.getItem('token') && <Route exact path={`${process.env.PUBLIC_URL}/posts`} component={Home} />}
-					{localStorage.getItem('token') && <Route exact path={`${process.env.PUBLIC_URL}/friends`} component={Home} />}
-					{localStorage.getItem('token') && <Route component={Error404} /> }
+					{localStorage.getItem('token') && <Route path="/*" component={Home} />}
 				</Switch>
 
 				{/* token: false */}
 				<Switch>
-					{ !localStorage.getItem('token') && <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />}
-					{ !localStorage.getItem('token') && <Route exact path={`${process.env.PUBLIC_URL}/register`} component={Register} />}
-					{/* { !localStorage.getItem('token') && <Route path="/*" component={Login} /> } */}
+					{ !localStorage.getItem('token') && <Route exact path="/login" component={Login} />}
+					{ !localStorage.getItem('token') && <Route exact path="/register" component={Register} />}
+					{ !localStorage.getItem('token') && <Route path="/*" component={Login} /> }
 					{/* { !localStorage.getItem('token') && <p>heu</p> } */}
-					{ !localStorage.getItem('token') && <Route path="/*" component={Error404} /> }
+					{/* { !localStorage.getItem('token') && <Route path="/*" component={Error404} /> } */}
 
 				</Switch>
 			</BrowserRouter>

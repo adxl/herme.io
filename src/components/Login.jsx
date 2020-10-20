@@ -66,7 +66,7 @@ class Login extends Component {
     								<MDBBtn color="indigo" type="submit">Login</MDBBtn>
     								<p className="mt-3">
                       Not a member?
-    									<Link to={`${process.env.PUBLIC_URL}/register`}> Register</Link>
+    									<Link to="/register"> Register</Link>
     								</p>
     							</div>
     						</form>

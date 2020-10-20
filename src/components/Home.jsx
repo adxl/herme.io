@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { MDBNav, MDBNavLink } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUserFriends, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -71,18 +72,18 @@ class Home extends Component {
 						</div>
 						<div className="profile-menu">
 							<MDBNav className="flex-column profile-nav">
-								<MDBNavLink name="home" to={`${process.env.PUBLIC_URL}/home`}>
+								<Link name="home" to="/home">
 									<FontAwesomeIcon icon={faHome} />
 									<span> Home</span>
-								</MDBNavLink>
-								<MDBNavLink name="posts" to={`${process.env.PUBLIC_URL}/posts`}>
+								</Link>
+								<Link name="posts" to="/posts">
 									<FontAwesomeIcon icon={faUser} />
 									<span> Posts</span>
-								</MDBNavLink>
-								<MDBNavLink name="friends" to={`${process.env.PUBLIC_URL}/friends`}>
+								</Link>
+								<Link name="friends" to="/friends">
 									<FontAwesomeIcon icon={faUserFriends} />
 									<span> Friends</span>
-								</MDBNavLink>
+								</Link>
 							</MDBNav>
 						</div>
 					</div>
