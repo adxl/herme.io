@@ -50,7 +50,7 @@ class Feed extends Component {
     			{posts.length <= 0 && (
     				<div>
     					<h2 className="no-p-msg"> Your home page seems to be empty </h2>
-    					<p className="no-p-msg"> Try to add some <a href="/friends">friends</a> to see their posts</p>
+    					<p className="no-p-msg"> Try to add some <a href={`${process.env.PUBLIC_URL}/friends`}>friends</a> to see their posts</p>
     				</div>
     			)}
     			</div>

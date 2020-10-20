@@ -58,7 +58,7 @@ class ChatBar extends Component {
 	 					))}
 	 					{!friends.length && (
 	 						<div>
-	 							<p className="no-f-r-msg">No friends yet, click <a href="/friends"> here </a> to add some.</p>
+	 							<p className="no-f-r-msg">No friends yet, click <a href={`${process.env.PUBLIC_URL}/friends`}> here </a> to add some.</p>
 	 						</div>
 	 					)}
 	 				</ul>
