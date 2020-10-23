@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/herme.io/precache-manifest.06bcaa0af96c0ab123ba40bc38221796.js"
+  "/herme.io/precache-manifest.a6b1fc3a8d2f59e6a92770e0100fd4c0.js"
 );
 
 self.addEventListener('message', (event) => {
