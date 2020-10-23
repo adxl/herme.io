@@ -18,7 +18,7 @@ class Login extends Component {
 		}
 	}
 
-	 handleSubmit = async (e) => {
+	 handleSubmit = (e) => {
 	 	e.preventDefault();
 
 	 	const options = {
@@ -27,25 +27,26 @@ class Login extends Component {
 	 		body: JSON.stringify(this.state),
 	 	};
 
-	 	await fetch('https://herme-io.herokuapp.com/login/', options)
+		 // if (!response.ok) {
+	 			// 	console.log(response);
+	 			// 	throw new Error('FETCH ERROR');
+	 			// }
+	 	fetch('https://herme-io.herokuapp.com/login/', options)
 			  .then((response) => {
-	 			if (response.ok) {
-	 				return response.json();
-	 			}
-	 			return null;
-			 })
-	 		.then((data) => {
-	 			if (data) {
-	 				const { token } = data;
+				  if (response.ok) {
+					  return response.text();
+				  }
+				  this.setState({ errorMessage: 'Wrong username and/or password' });
+				  throw new Error('BAD REQUEST');
+			  })
+	 		.then((token) => {
 	 				if (token) {
+	 				console.log(token);
 	 					localStorage.setItem('token', token);
 	 					window.location.replace(`${process.env.PUBLIC_URL}/home`);
 	 				}
-	 			} else {
-	 				this.setState({ errorMessage: 'Wrong username and/or password' });
-				 }
 	 		})
-	 		.catch((error) => { throw error; });
+	 		.catch((error) => { console.log(error); });
 	 }
 
 	 render() {

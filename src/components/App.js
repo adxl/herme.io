@@ -7,8 +7,6 @@ import Home from './Home';
 // import Error404 from './Error404';
 
 function App() {
-	console.log(`${process.env.PUBLIC_URL}`);
-	console.log(window.location);
 	return (
 		<Fragment>
 			<BrowserRouter basename={process.env.PUBLIC_URL}>
