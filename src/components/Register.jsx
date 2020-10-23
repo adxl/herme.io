@@ -48,11 +48,17 @@ class Register extends Component {
 		};
 
 		await fetch('https://herme-io.herokuapp.com/register/', options)
+			.then((response) => {
+				if (response.ok) {
+					return 'signed';
+				}
+				return response.text();
+			})
 			.then((data) => {
-				if (data.ok) {
+				if (data === 'signed') {
 					window.location.replace(`${process.env.PUBLIC_URL}/login`);
 				} else {
-					this.setState({ errorMessage: 'The username and/or email have already been used' });
+					this.setState({ errorMessage: data });
 				}
 			})
 			.catch((error) => { throw error; });
@@ -83,7 +89,7 @@ class Register extends Component {
 								<br />
 								<input name="username" required minLength="4" type="text" placeholder="Username" id="defaultFormRegisterUsernameEx" className="form-control" onChange={this.handleInputChange} />
 								<br />
-								<input name="password" required minLength="6" type="password" placeholder="Password" id="defaultFormRegisterPasswordEx" className="form-control" onChange={this.handleInputChange} />
+								<input name="password" required minLength="10" type="password" placeholder="Password" id="defaultFormRegisterPasswordEx" className="form-control" onChange={this.handleInputChange} />
     						<br />
 
 								<div className="text-center mt-4">
